@@ -1084,17 +1084,5 @@
     document.querySelectorAll('.brand-card').forEach(el => brandObs.observe(el));
 
   </script>
-
-  <!-- ── CHEESE POPUP ── -->
-  <div id="cheeseModal" style="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(10,9,8,0.88);backdrop-filter:blur(10px);">
-    <div style="max-width:460px;width:90%;border:1.5px solid rgba(184,151,106,0.75);background:#131110;padding:3rem 2.5rem;text-align:center;box-shadow:0 0 0 1px rgba(184,151,106,0.15),0 40px 80px rgba(0,0,0,0.7);animation:fadeUp 0.5s 0.1s both;">
-      <div style="font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:#b8976a;margin-bottom:1.6rem;">Important Notice</div>
-      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:#faf7f2;line-height:1.45;margin-bottom:0.8rem;">This website was made by <em style="font-style:italic;color:#d4b896;">Mohit</em>.</p>
-      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:300;color:#a09488;line-height:1.55;margin-bottom:2rem;">You owe him three jars of soft cheese<br/>from Burrows Market upon your return.</p>
-      <p style="font-size:0.75rem;color:#5a5450;letter-spacing:0.08em;margin-bottom:2rem;">To confirm, please press Yes.</p>
-      <button id="cheeseBtn" onclick="document.getElementById('cheeseModal').style.display='none'" style="font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;padding:0.9rem 3rem;background:transparent;border:1.5px solid rgba(184,151,106,0.65);color:#d4b896;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='rgba(184,151,106,0.1)';this.style.borderColor='#b8976a';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(184,151,106,0.65)';">Yes</button>
-    </div>
-  </div>
-
 </body>
 </html>
