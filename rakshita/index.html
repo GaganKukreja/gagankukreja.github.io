@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rakshita Jain — Marketplace & Marketing Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0c;
+      --parchment: #f5f0e8;
+      --cream: #faf7f2;
+      --gold: #b8976a;
+      --gold-light: #d4b896;
+      --muted: #7a7268;
+      --rule: rgba(184,151,106,0.4);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--parchment);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease;
+    }
+    .cursor-ring {
+      width: 32px; height: 32px;
+      border: 1px solid rgba(184,151,106,0.5);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.4s ease, opacity 0.3s;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 4rem;
+      background: linear-gradient(to bottom, rgba(15,14,12,0.95), transparent);
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-tagline {
+      margin-top: 2rem;
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-style: italic;
+      color: var(--muted);
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeUp 1s 0.75s forwards;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: rgba(184,151,106,0.35);
+    }
+
+    /* ── INTRO ── */
+    .intro-text {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--cream);
+      max-width: 820px;
+    }
+    .intro-text em { font-style: italic; color: var(--gold-light); }
+    .intro-stats {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+    .stat {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-grid { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .exp-item.visible { opacity: 1; transform: translateY(0); }
+    .exp-left {}
+    .exp-company {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .exp-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .exp-right {}
+    .exp-bullets {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: #c8c2b8;
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+    .exp-highlight {
+      color: var(--gold-light) !important;
+      font-style: italic;
+    }
+
+    /* ── SKILLS ── */
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .skill-group-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .skill-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .skill-tag {
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid rgba(184,151,106,0.65);
+      color: #c8c2b8;
+      letter-spacing: 0.05em;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .skill-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .cert-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .cert-list li {
+      font-size: 0.82rem;
+      color: #c8c2b8;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .cert-list li::before {
+      content: '◆';
+      position: absolute; left: 0;
+      color: var(--gold);
+      font-size: 0.5rem;
+      top: 0.35rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .edu-card {
+      background: rgba(255,255,255,0.02);
+      border: 1.5px solid rgba(184,151,106,0.65);
+      padding: 2.5rem;
+      transition: background 0.3s;
+    }
+    .edu-card:hover { background: rgba(184,151,106,0.05); }
+    .edu-school {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .edu-degree {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .edu-years {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .edu-courses {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.015);
+      border: 1.5px solid rgba(184,151,106,0.65);
+      padding: 2.5rem;
+      transition: background 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s;
+    }
+    .project-card.visible { opacity: 1; transform: translateY(0); }
+    .project-card:hover { background: rgba(184,151,106,0.05); }
+    .project-client {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .project-role {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .project-date {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .project-desc {
+      font-size: 0.82rem;
+      color: #c0b8ae;
+      line-height: 1.7;
+    }
+    .project-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,151,106,0.4);
+      padding: 0.25rem 0.7rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      min-height: 60vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 8rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    .contact-headline em { font-style: italic; color: var(--gold-light); }
+    .contact-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      letter-spacing: 0.05em;
+    }
+    .contact-links {
+      display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+    }
+    .contact-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,151,106,0.3);
+      padding-bottom: 0.2rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .contact-link:hover {
+      color: var(--cream);
+      border-color: var(--cream);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%; height: 1px;
+      background: rgba(184,151,106,0.35);
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+
+    /* ══ BRANDS SHOWCASE ══ */
+    .brands-wrap {
+      padding: 2rem 0 5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .brands-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(184,151,106,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .brands-heading-row {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .brands-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Marquee */
+    .marquee-outer {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      margin-bottom: 4rem;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 1.2rem;
+      width: max-content;
+      animation: marqueeRoll 22s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marqueeRoll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .brand-pill {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1.8rem;
+      border: 1.5px solid rgba(184,151,106,0.65);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      color: var(--muted);
+      transition: color 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+    .brand-pill:hover { color: var(--gold-light); border-color: var(--gold); }
+    .brand-icon { font-size: 0.6rem; color: var(--gold); }
+
+    /* Brand card grid */
+    .brand-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+    .brand-card {
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid rgba(184,151,106,0.65);
+      cursor: default;
+      transition: border-color 0.4s;
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.4s;
+    }
+    .brand-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .brand-card:hover { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 8px 40px rgba(184,151,106,0.18); z-index: 2; }
+
+    /* Glow blob that follows mouse per card */
+    .bc-glow {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      pointer-events: none;
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 0.4s;
+      filter: blur(60px);
+    }
+    .bc-loreal .bc-glow   { background: radial-gradient(circle, rgba(255,70,85,0.28) 0%, transparent 70%); }
+    .bc-sharkninja .bc-glow { background: radial-gradient(circle, rgba(70,140,255,0.28) 0%, transparent 70%); }
+    .bc-connetix .bc-glow { background: radial-gradient(circle, rgba(80,220,130,0.28) 0%, transparent 70%); }
+    .bc-margiela .bc-glow { background: radial-gradient(circle, rgba(220,180,120,0.32) 0%, transparent 70%); }
+    .bc-ferrari .bc-glow  { background: radial-gradient(circle, rgba(220,50,50,0.3) 0%, transparent 70%); }
+    .bc-ysl .bc-glow      { background: radial-gradient(circle, rgba(180,120,220,0.28) 0%, transparent 70%); }
+    .brand-card:hover .bc-glow { opacity: 1; }
+
+    .bc-inner {
+      padding: 2rem 1.8rem 2.2rem;
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .bc-logo-text {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      color: rgba(245,240,232,0.75);
+      transition: color 0.4s;
+      margin-bottom: 1.4rem;
+    }
+    .bc-logo-text span {
+      display: block;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+    .brand-card:hover .bc-logo-text { color: rgba(245,240,232,1); }
+
+    .bc-role {
+      font-size: 0.82rem;
+      color: var(--cream);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+    .bc-loc {
+      font-size: 0.67rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .bc-detail {
+      font-size: 0.8rem;
+      color: #8a8278;
+      line-height: 1.7;
+      margin-bottom: 1.1rem;
+    }
+    .brand-card:hover .bc-detail { color: #c0b8ae; }
+    .bc-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+    .bc-tags span {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.65rem;
+      border: 1.5px solid rgba(184,151,106,0.65);
+      color: var(--muted);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .brand-card:hover .bc-tags span {
+      border-color: rgba(184,151,106,0.4);
+      color: var(--gold-light);
+    }
+
+    /* Staggered animation delays */
+    .brand-card[data-index="0"] { transition-delay: 0s; }
+    .brand-card[data-index="1"] { transition-delay: 0.08s; }
+    .brand-card[data-index="2"] { transition-delay: 0.16s; }
+    .brand-card[data-index="3"] { transition-delay: 0.24s; }
+    .brand-card[data-index="4"] { transition-delay: 0.32s; }
+    .brand-card[data-index="5"] { transition-delay: 0.40s; }
+
+    @media (max-width: 900px) {
+      .brand-cards-grid { grid-template-columns: repeat(2, 1fr); padding: 0 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .brand-cards-grid { grid-template-columns: 1fr; }
+    }
+    /* ══ END BRANDS CSS ══ */
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 1.5rem; }
+      .intro-stats { grid-template-columns: repeat(2, 1fr); }
+      .skills-layout { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-name">Rakshita Jain</div>
+    <ul class="nav-links">
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-eyebrow">Marketplace &amp; Marketing Specialist</p>
+    <h1 class="hero-name">Rakshita<br/><em>Jain</em></h1>
+    <p class="hero-tagline">Turning marketplace data into growth — across UK, EU, AU, US, CA &amp; IN.</p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <p class="intro-text">
+      A marketplace specialist with <em>2+ years</em> launching and optimising products across global platforms —
+      blending analytical rigour with creative instinct to drive sales,
+      improve conversion, and build brands that <em>endure</em>.
+    </p>
+    <div class="intro-stats">
+      <div class="stat">
+        <span class="stat-num">261%</span>
+        <span class="stat-label">YoY Amazon DE Growth</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">6.1</span>
+        <span class="stat-label">Blended ROAS (from 3.7)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">11</span>
+        <span class="stat-label">Amazon Markets Managed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">70+</span>
+        <span class="stat-label">SKUs Launched &amp; Managed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BRANDS SHOWCASE ══ -->
+  <div class="brands-wrap" id="brands">
+    <div class="brands-heading-row">
+      <span class="brands-eyebrow">Trusted by</span>
+    </div>
+
+    <!-- Marquee Row 1 -->
+    <div class="marquee-outer">
+      <div class="marquee-track" id="marquee1">
+        <div class="brand-pill loreal"><span class="brand-icon">✦</span>L'Oréal Group</div>
+        <div class="brand-pill sharkninja"><span class="brand-icon">✦</span>SharkNinja</div>
+        <div class="brand-pill connetix"><span class="brand-icon">✦</span>Connetix</div>
+        <div class="brand-pill margiela"><span class="brand-icon">✦</span>Maison Margiela</div>
+        <div class="brand-pill ysl"><span class="brand-icon">✦</span>YSL Beauty</div>
+        <div class="brand-pill ferrari"><span class="brand-icon">✦</span>Ferrari</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="brand-pill loreal"><span class="brand-icon">✦</span>L'Oréal Group</div>
+        <div class="brand-pill sharkninja"><span class="brand-icon">✦</span>SharkNinja</div>
+        <div class="brand-pill connetix"><span class="brand-icon">✦</span>Connetix</div>
+        <div class="brand-pill margiela"><span class="brand-icon">✦</span>Maison Margiela</div>
+        <div class="brand-pill ysl"><span class="brand-icon">✦</span>YSL Beauty</div>
+        <div class="brand-pill ferrari"><span class="brand-icon">✦</span>Ferrari</div>
+      </div>
+    </div>
+
+    <!-- Brand Cards Grid -->
+    <div class="brand-cards-grid">
+      <div class="brand-card bc-loreal" data-index="0">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">L'ORÉAL<br/><span>GROUP</span></div>
+          <div class="bc-body">
+            <p class="bc-role">International e-Commerce PM Intern</p>
+            <p class="bc-loc">Paris, France · 2024</p>
+            <p class="bc-detail">Managed 70+ SKU listing project for Maison Margiela. Benchmarked 10+ luxury beauty brands on Amazon.</p>
+            <div class="bc-tags"><span>Amazon A+</span><span>Luxury Beauty</span><span>70+ SKUs</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-card bc-sharkninja" data-index="1">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">SHARK<br/><span>NINJA</span></div>
+          <div class="bc-body">
+            <p class="bc-role">Amazon Marketplace Executive</p>
+            <p class="bc-loc">London, UK · 2024–25</p>
+            <p class="bc-detail">Managed & optimised Amazon catalogue ensuring effective messaging across 11 global markets. 10+ product launches.</p>
+            <div class="bc-tags"><span>11 Markets</span><span>Catalogue Ops</span><span>10+ Launches</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-card bc-connetix" data-index="2">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">CONNE<br/><span>TIX</span></div>
+          <div class="bc-body">
+            <p class="bc-role">Junior Marketplace Account Manager</p>
+            <p class="bc-loc">Remote, UK · 2025–Now</p>
+            <p class="bc-detail">+261% YoY Amazon DE growth. Raised blended ROAS 3.7→6.1. Delivered £300K revenue via France marketplace launch.</p>
+            <div class="bc-tags"><span>+261% YoY</span><span>ROAS 6.1</span><span>£300K Rev</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-card bc-margiela" data-index="3">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">MAISON<br/><span>MARGIELA</span></div>
+          <div class="bc-body">
+            <p class="bc-role">Brand Guidelines & Asset Management</p>
+            <p class="bc-loc">Paris, France · 2024</p>
+            <p class="bc-detail">Provided agency feedback ensuring consistent representation aligned to Maison Margiela's luxury brand identity.</p>
+            <div class="bc-tags"><span>Luxury Brand</span><span>A+ Content</span><span>Agencies</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-card bc-ferrari" data-index="4">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">FER<br/><span>RARI</span></div>
+          <div class="bc-body">
+            <p class="bc-role">ESCP Marketing Consultant — Winner</p>
+            <p class="bc-loc">ESCP Business School · 2023</p>
+            <p class="bc-detail">Presented a winning strategy for the Purosangue campaign, redefining Ferrari's position in the sustainable luxury market.</p>
+            <div class="bc-tags"><span>🏆 Winner</span><span>Luxury Strategy</span><span>Sustainability</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-card bc-ysl" data-index="5">
+        <div class="bc-glow"></div>
+        <div class="bc-inner">
+          <div class="bc-logo-text">YSL<br/><span>BEAUTY</span></div>
+          <div class="bc-body">
+            <p class="bc-role">ESCP Marketing Consultant</p>
+            <p class="bc-loc">ESCP Business School · 2023</p>
+            <p class="bc-detail">Conceptualised a customisable, refillable lipstick line for YSL targeting Gen Z around authenticity & sustainability.</p>
+            <div class="bc-tags"><span>Gen Z Strategy</span><span>Sustainability</span><span>Innovation</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ══ END BRANDS ══ -->
+
+  <div class="divider"></div>
+
+  <!-- Experience -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <div class="exp-grid">
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <p class="exp-company">Connetix</p>
+          <h3 class="exp-role">Junior Marketplace Account Manager</h3>
+          <p class="exp-meta">Remote, UK &nbsp;·&nbsp; Mar 2025 – Ongoing</p>
+        </div>
+        <div class="exp-right">
+          <ul class="exp-bullets">
+            <li class="exp-highlight">Unlocked organic demand driving +261% YoY Amazon DE growth via localisation across content touchpoints.</li>
+            <li>Improved advertising efficiency, raising blended ROAS from 3.7 to 6.1 across 11 Amazon locales.</li>
+            <li>Supported 7 Amazon NPD launches across 15 markets through a standardised, cross-functional launch process.</li>
+            <li>Maintained ongoing PDP optimisation via competitor benchmarking, keyword research, and A/B testing.</li>
+            <li class="exp-highlight">Delivered £300K revenue by launching two marketplaces in France ahead of Q4 2025.</li>
+            <li>Coordinated with internal and marketplace teams to execute Q4 activations and seasonal brand campaigns.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <p class="exp-company">SharkNinja</p>
+          <h3 class="exp-role">Amazon Marketplace Executive Temp</h3>
+          <p class="exp-meta">London, UK &nbsp;·&nbsp; Nov 2024 – Jan 2025</p>
+        </div>
+        <div class="exp-right">
+          <ul class="exp-bullets">
+            <li>Managed &amp; optimised Amazon catalogue, including content &amp; imagery, ensuring effective messaging across 11 markets.</li>
+            <li>Monitored product reviews &amp; quality information, and collaborated with marketing teams for over 10 product launches.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <p class="exp-company">L'Oréal Group</p>
+          <h3 class="exp-role">International e-Commerce Project Manager Intern</h3>
+          <p class="exp-meta">Paris, France &nbsp;·&nbsp; Jan 2024 – Jun 2024</p>
+        </div>
+        <div class="exp-right">
+          <ul class="exp-bullets">
+            <li>Supported development of Amazon Strategy &amp; Project timeline, working closely with Marketing, COE and Markets.</li>
+            <li>Managed Amazon Listing Project for 70+ SKUs; Conducted Asset Gap Analysis &amp; developed PDP/Brand Store templates.</li>
+            <li>Provided feedback to agencies, ensuring alignment with Maison Margiela brand guidelines.</li>
+            <li class="exp-highlight">Benchmarked 10+ luxury beauty brands on Amazon, identifying key insights to create high-converting A+ content.</li>
+            <li>Coordinated briefs and Jira tickets with OSF for content updates, ensuring timely handovers from creative/SEO agencies.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-left">
+          <p class="exp-company">Vivifi India</p>
+          <h3 class="exp-role">Creative Project Lead — Marketing</h3>
+          <p class="exp-meta">Hyderabad, India &nbsp;·&nbsp; Jan 2020 – Dec 2022</p>
+        </div>
+        <div class="exp-right">
+          <ul class="exp-bullets">
+            <li class="exp-highlight">Strategized multi-channel digital campaigns (PPC, SD, SM), generating 5M+ impressions &amp; 10M INR revenue.</li>
+            <li>Developed pricing, positioning, and promotions for Femarelle nutrition products for the Indian market.</li>
+            <li>Led influencer marketing initiatives, resulting in 200K+ engagements and a 20% increase in sales.</li>
+            <li>Analysed consumer buying patterns for email targeting, delivering 1.5M INR monthly revenue &amp; 5% MoM growth.</li>
+            <li>Led shoppable website development project with cross-functional teams, implementing SEO &amp; UX best practices.</li>
+            <li>Conducted digital media performance analysis using Meta Business Manager &amp; GA, producing bi-weekly reports.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Skills -->
+  <section id="skills">
+    <p class="section-label">Competencies</p>
+    <div class="skills-layout">
+      <div>
+        <p class="skill-group-title">Technical</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Amazon Seller Central</span>
+          <span class="skill-tag">Amazon Ads Console</span>
+          <span class="skill-tag">Helium10</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">Meta Business Manager</span>
+          <span class="skill-tag">Odoo</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">SEO</span>
+          <span class="skill-tag">A+ Content</span>
+          <span class="skill-tag">PPC / Sponsored Ads</span>
+        </div>
+        <br/>
+        <p class="skill-group-title">Interpersonal</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Eye for Detail</span>
+          <span class="skill-tag">Critical Thinking</span>
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Agency Management</span>
+          <span class="skill-tag">Problem Solving</span>
+          <span class="skill-tag">Cross-functional Collaboration</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-title">Certifications</p>
+        <ul class="cert-list">
+          <li>Google Digital Marketing Certification</li>
+          <li>Google Analytics Certification</li>
+          <li>Amazon Sponsored Ads Certification</li>
+        </ul>
+        <br/>
+        <p class="skill-group-title">Languages</p>
+        <div class="skill-tags">
+          <span class="skill-tag">English</span>
+          <span class="skill-tag">Hindi</span>
+          <span class="skill-tag">French (A2)</span>
+        </div>
+        <br/>
+        <p class="skill-group-title">Markets</p>
+        <div class="skill-tags">
+          <span class="skill-tag">United Kingdom</span>
+          <span class="skill-tag">European Union</span>
+          <span class="skill-tag">Australia</span>
+          <span class="skill-tag">United States</span>
+          <span class="skill-tag">Canada</span>
+          <span class="skill-tag">India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Education -->
+  <section id="education">
+    <p class="section-label">Education</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3 class="edu-school">ESCP Business School</h3>
+        <p class="edu-degree">Master's — Marketing &amp; Creativity</p>
+        <p class="edu-years">UK &amp; France &nbsp;·&nbsp; 2023 – 2024</p>
+        <p class="edu-courses">Data Analytics · Digital Marketing · Marketing 4Ps · Integrated Communications · Branding · Finance · Strategy</p>
+      </div>
+      <div class="edu-card">
+        <h3 class="edu-school">Symbiosis Institute of Technology</h3>
+        <p class="edu-degree">B.Tech — Information Technology</p>
+        <p class="edu-years">India &nbsp;·&nbsp; 2015 – 2019</p>
+        <p class="edu-courses">Java · C++ · HTML · Python · Software Engineering · Cloud Computing · SEO · Computer Networks</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <p class="section-label">Consulting Projects</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <p class="project-client">Ferrari — ESCP</p>
+        <h3 class="project-role">Marketing Consultant</h3>
+        <p class="project-date">May 2023 – Jun 2023</p>
+        <p class="project-desc">Conducted in-depth research on sustainability trends and the luxury market to shape Ferrari's Purosangue campaign strategy. Presented an innovative proposal to redefine Ferrari's brand position in sustainable luxury.</p>
+        <span class="project-badge">Winner</span>
+      </div>
+      <div class="project-card">
+        <p class="project-client">L'Oréal Paris — ESCP</p>
+        <h3 class="project-role">Marketing Consultant</h3>
+        <p class="project-date">Mar 2023 – Apr 2023</p>
+        <p class="project-desc">Conceptualised a customisable, refillable lipstick line for YSL, targeting Gen Z with a focus on authenticity and sustainability. Developed a strategic marketing plan leveraging influencer partnerships and digital campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <div class="contact-section" id="contact">
+    <h2 class="contact-headline">Let's build<br/><em>something together.</em></h2>
+    <p class="contact-sub">Open to new opportunities across marketplace, e-commerce and brand marketing.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://linkedin.com/in/rakshitajain" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Rakshita Jain &nbsp;·&nbsp; London, UK</p>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── CURSOR ──
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+    });
+
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform += ' scale(2)';
+        ring.style.opacity = '0.3';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.opacity = '1';
+      });
+    });
+
+    // ── SCROLL REVEAL ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+
+    // ── BRAND CARD GLOW TRACKING ──
+    document.querySelectorAll('.brand-card').forEach(card => {
+      const glow = card.querySelector('.bc-glow');
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        glow.style.transform = `translate(${x - 150}px, ${y - 150}px)`;
+      });
+    });
+
+    // ── BRAND CARD SCROLL REVEAL ──
+    const brandObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.brand-card').forEach(el => brandObs.observe(el));
+
+  </script>
+
+  <!-- ── CHEESE POPUP ── -->
+  <div id="cheeseModal" style="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(10,9,8,0.88);backdrop-filter:blur(10px);">
+    <div style="max-width:460px;width:90%;border:1.5px solid rgba(184,151,106,0.75);background:#131110;padding:3rem 2.5rem;text-align:center;box-shadow:0 0 0 1px rgba(184,151,106,0.15),0 40px 80px rgba(0,0,0,0.7);animation:fadeUp 0.5s 0.1s both;">
+      <div style="font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:#b8976a;margin-bottom:1.6rem;">Important Notice</div>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:300;color:#faf7f2;line-height:1.45;margin-bottom:0.8rem;">This website was made by <em style="font-style:italic;color:#d4b896;">Mohit</em>.</p>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:300;color:#a09488;line-height:1.55;margin-bottom:2rem;">You owe him three jars of soft cheese<br/>from Burrows Market upon your return.</p>
+      <p style="font-size:0.75rem;color:#5a5450;letter-spacing:0.08em;margin-bottom:2rem;">To confirm, please press Yes.</p>
+      <button id="cheeseBtn" onclick="document.getElementById('cheeseModal').style.display='none'" style="font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;padding:0.9rem 3rem;background:transparent;border:1.5px solid rgba(184,151,106,0.65);color:#d4b896;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='rgba(184,151,106,0.1)';this.style.borderColor='#b8976a';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(184,151,106,0.65)';">Yes</button>
+    </div>
+  </div>
+
+</body>
+</html>
