@@ -17,6 +17,9 @@
 </head>
 <body>
 
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- ========== LOADER ========== -->
     <div class="loader" id="loader">
         <div class="loader-icon"></div>
@@ -52,13 +55,21 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero" id="hero">
+        <!-- Interactive Particle Network Canvas -->
+        <canvas class="hero-particles" id="heroParticles"></canvas>
+
+        <!-- Morphing SVG Blob (SliderRevolution-style) -->
+        <svg class="morph-blob-wrap" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <path class="morph-blob" d="M150,50 C220,50 250,120 250,150 C250,220 220,250 150,250 C80,250 50,220 50,150 C50,80 80,50 150,50Z"/>
+        </svg>
+
         <div class="hero-grid-bg"></div>
-        <div class="hero-blob hero-blob--pink" data-speed="-0.04"></div>
-        <div class="hero-blob hero-blob--coral" data-speed="0.03"></div>
+        <div class="hero-blob hero-blob--pink" data-speed="-0.04" data-depth="-1.5"></div>
+        <div class="hero-blob hero-blob--coral" data-speed="0.03" data-depth="1"></div>
 
         <div class="hero-inner">
             <!-- Left -->
-            <div class="hero-left">
+            <div class="hero-left" data-depth="0.3">
                 <div class="hero-tag" data-hero-anim="0">
                     <span class="hero-tag-dot"></span>
                     Available for Q2 2026
@@ -102,7 +113,7 @@
             </div>
 
             <!-- Right -->
-            <div class="hero-right">
+            <div class="hero-right" data-depth="-0.6">
                 <div class="hero-card" data-hero-anim="300" data-speed="-0.03">
                     <div class="hc-metric-row">
                         <span class="hc-big">847</span>
@@ -243,7 +254,7 @@
     </section>
 
     <!-- ========== RESULTS ========== -->
-    <section class="section results" id="results">
+    <section class="section results" id="results" data-clip-reveal>
         <div class="container">
             <div class="section-header" data-reveal>
                 <div class="section-label">Proven Results</div>

@@ -79,7 +79,7 @@ html.lenis, html.lenis body { height: auto; }
     background: var(--dark);
     display: flex; align-items: center; justify-content: center; flex-direction: column;
     gap: 1.5rem;
-    transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
+    transition: opacity 0.9s var(--ease-out-expo), visibility 0.9s;
 }
 .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .loader-icon {
@@ -98,6 +98,50 @@ html.lenis, html.lenis body { height: auto; }
     0% { transform: rotate(0deg) scale(1); opacity: .6; }
     50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
     100% { transform: rotate(360deg) scale(1); opacity: .6; }
+}
+
+/* --- SCROLL PROGRESS BAR (SliderRevolution-style) --- */
+.scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 3px; width: 0;
+    background: linear-gradient(90deg, var(--pink), var(--coral));
+    z-index: 10001;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+/* --- PARTICLE CANVAS (Interactive hero background) --- */
+.hero-particles {
+    position: absolute; inset: 0;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* --- MORPHING SVG BLOB --- */
+.morph-blob-wrap {
+    position: absolute;
+    width: clamp(280px, 35vw, 500px);
+    height: clamp(280px, 35vw, 500px);
+    right: -5%; top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0.07;
+    pointer-events: none;
+}
+.morph-blob {
+    fill: var(--pink);
+    transition: fill 0.5s;
+}
+
+/* --- MOUSE DEPTH LAYERS --- */
+[data-depth] {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* --- CLIP REVEAL SECTIONS --- */
+[data-clip-reveal] {
+    will-change: clip-path;
 }
 
 /* ==========================================================
