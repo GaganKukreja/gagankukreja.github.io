@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch — Book a free strategy session with The Marketing Anatomy.">
+    <meta name="theme-color" content="#1a1919">
+    <title>Contact — The Marketing Anatomy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="loader" id="loader"><div class="loader-icon"></div><div class="loader-text">Loading Experience</div></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo"><div class="nav-logo-mark"></div><span class="nav-logo-text">The Marketing Anatomy</span></a>
+        <div class="nav-menu">
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="work.html" class="nav-link">Work</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-cta-btn" data-magnetic style="background:var(--pink)">Let's Connect</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-overlay" id="mobileOverlay">
+        <a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Let's Connect</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-breadcrumb" data-hero-anim="0"><a href="index.html">Home</a> <span>/</span> Contact</div>
+            <h1 data-hero-anim="100">Let's build your brand's <em>next chapter</em> together</h1>
+            <p class="page-hero-desc" data-hero-anim="200">Book a free 30-minute strategy session. No pitch, no pressure — just a conversation about where you are and where you want to go.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" style="background:var(--bg)">
+        <div class="container">
+            <div class="contact-layout">
+                <!-- Left: Info -->
+                <div class="contact-info" data-reveal>
+                    <h2>Have a project in mind? <em>We'd love to hear it.</em></h2>
+                    <p>Fill out the form and our team will get back to you within 24 hours. Or reach out directly — we're always happy to chat.</p>
+
+                    <div class="contact-detail">
+                        <div class="cd-icon">📧</div>
+                        <div class="cd-text">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@themarketinganatomy.com">hello@themarketinganatomy.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon">📱</div>
+                        <div class="cd-text">
+                            <h4>Phone</h4>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon">📍</div>
+                        <div class="cd-text">
+                            <h4>Location</h4>
+                            <p>Mumbai, India — Working Globally</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="cd-icon">🕐</div>
+                        <div class="cd-text">
+                            <h4>Response Time</h4>
+                            <p>Within 24 hours (Mon–Fri)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-socials">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="LinkedIn">Li</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                        <a href="#" aria-label="Twitter/X">X</a>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="contact-form" data-reveal="right" id="contactFormWrap">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fname">First Name *</label>
+                                <input type="text" id="fname" class="form-input" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name *</label>
+                                <input type="text" id="lname" class="form-input" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-input" placeholder="john@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">What are you interested in?</label>
+                            <select id="service" class="form-select">
+                                <option value="">Select a service</option>
+                                <option>Social Media Strategy</option>
+                                <option>Content Creation</option>
+                                <option>Growth & Engagement</option>
+                                <option>Lead Generation</option>
+                                <option>Brand Positioning</option>
+                                <option>Full Social Media Management</option>
+                                <option>Not sure — need guidance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Monthly Budget Range</label>
+                            <select id="budget" class="form-select">
+                                <option value="">Select a range</option>
+                                <option>Under $1,000</option>
+                                <option>$1,000 – $2,500</option>
+                                <option>$2,500 – $5,000</option>
+                                <option>$5,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell us about your project *</label>
+                            <textarea id="message" class="form-textarea" placeholder="What are your goals? What platforms are you focused on? What challenges are you facing?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--dark" style="width:100%;justify-content:center;padding:1rem 2rem">
+                            Send Message <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ MINI -->
+    <section class="section faq" style="background:var(--white)">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">Before You Reach Out</div>
+                <h2 class="section-title">Quick answers to <em>common questions</em></h2>
+            </div>
+            <div class="faq-list" data-reveal>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        What happens after I submit the form?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer"><p>You'll receive a confirmation email within minutes. A team member will review your submission and reach out within 24 hours to schedule a free 30-minute strategy call.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        Is the strategy call really free?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer"><p>Yes, 100%. The call is a genuine consultation where we assess your current social presence, discuss your goals, and recommend a path forward — whether that includes working with us or not.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                        Do you work with international clients?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer"><p>Absolutely. We're based in Mumbai but work with clients globally. All meetings happen over Zoom/Google Meet, and we adjust to your timezone for calls and check-ins.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="section-label" style="justify-content:center" data-reveal>Prefer Email?</div>
+            <h2 class="section-title" style="margin:0 auto;text-align:center" data-reveal>Reach us directly at <em>hello@themarketinganatomy.com</em></h2>
+            <p class="cta-sub" data-reveal>We typically respond within a few hours during business days.</p>
+            <div style="text-align:center;position:relative;z-index:1" data-reveal>
+                <a href="mailto:hello@themarketinganatomy.com" class="btn btn--dark" style="font-size:0.95rem;padding:1rem 2.4rem" data-magnetic>Send an Email <span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo"><div class="nav-logo-mark"></div><span class="nav-logo-text" style="color:var(--white)">The Marketing Anatomy</span></a>
+                    <p>Strategic social media management for service businesses and ambitious founders who refuse to blend in.</p>
+                </div>
+                <div class="footer-col"><h4>Navigate</h4><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+                <div class="footer-col"><h4>Services</h4><a href="services.html#strategy">Social Media Strategy</a><a href="services.html#content">Content Creation</a><a href="services.html#leads">Lead Generation</a><a href="services.html#positioning">Brand Positioning</a></div>
+                <div class="footer-col"><h4>Connect</h4><a href="mailto:hello@themarketinganatomy.com">hello@themarketinganatomy.com</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 The Marketing Anatomy. All rights reserved.</p>
+                <div class="footer-socials"><a href="#" class="footer-social">IG</a><a href="#" class="footer-social">Li</a><a href="#" class="footer-social">YT</a><a href="#" class="footer-social">X</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const wrap = document.getElementById('contactFormWrap');
+            wrap.innerHTML = '<div class="form-success"><h3>Message sent!</h3><p>Thanks for reaching out. We\'ll get back to you within 24 hours with next steps.</p><br><a href="index.html" class="btn btn--dark">Back to Home <span class="btn-arrow">→</span></a></div>';
+            wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+</body>
+</html>

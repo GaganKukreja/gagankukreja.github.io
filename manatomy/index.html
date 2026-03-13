@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Marketing Anatomy — Strategic social media management and growth frameworks for service businesses and ambitious founders.">
+    <meta name="theme-color" content="#1a1919">
+    <title>The Marketing Anatomy — Social Media Strategy & Growth</title>
+
+    <!-- Fonts: Playfair Display (elegant display) + Outfit (modern geometric body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ========== LOADER ========== -->
+    <div class="loader" id="loader">
+        <div class="loader-icon"></div>
+        <div class="loader-text">Loading Experience</div>
+    </div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark"></div>
+            <span class="nav-logo-text">The Marketing Anatomy</span>
+        </a>
+
+        <div class="nav-menu">
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="work.html" class="nav-link">Work</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-cta-btn" data-magnetic>Let's Connect</a>
+        </div>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ========== MOBILE OVERLAY ========== -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Let's Connect</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-blob hero-blob--pink" data-speed="-0.04"></div>
+        <div class="hero-blob hero-blob--coral" data-speed="0.03"></div>
+
+        <div class="hero-inner">
+            <!-- Left -->
+            <div class="hero-left">
+                <div class="hero-tag" data-hero-anim="0">
+                    <span class="hero-tag-dot"></span>
+                    Available for Q2 2026
+                </div>
+
+                <h1 class="hero-heading" data-hero-anim="100">
+                    We dissect your brand's <em>social media</em> and rebuild it for <em>growth</em>
+                </h1>
+
+                <p class="hero-desc" data-hero-anim="250">
+                    Strategic social media management, content systems, and growth frameworks that turn followers into customers — built for service businesses ready to scale.
+                </p>
+
+                <div class="btn-row" data-hero-anim="400">
+                    <a href="#contact" class="btn btn--fill" data-magnetic>
+                        Book a Strategy Call <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#services" class="btn btn--ghost">
+                        Explore Services
+                    </a>
+                </div>
+
+                <div class="hero-stats" data-hero-anim="550">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="200" data-suffix="+">0</div>
+                        <div class="hero-stat-label">Brands Scaled</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="12" data-suffix="M+">0</div>
+                        <div class="hero-stat-label">Reach Generated</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="3.8" data-suffix="×">0</div>
+                        <div class="hero-stat-label">Avg. ROI</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num" data-count="97" data-suffix="%">0</div>
+                        <div class="hero-stat-label">Client Retention</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="hero-right">
+                <div class="hero-card" data-hero-anim="300" data-speed="-0.03">
+                    <div class="hc-metric-row">
+                        <span class="hc-big">847</span>
+                        <span class="hc-suffix">%</span>
+                    </div>
+                    <div class="hc-label">Average Engagement Increase</div>
+
+                    <div class="hc-bar">
+                        <span class="hc-bar-label">Reach</span>
+                        <div class="hc-bar-track"><div class="hc-bar-fill" style="--fill:92%"></div></div>
+                    </div>
+                    <div class="hc-bar">
+                        <span class="hc-bar-label">Leads</span>
+                        <div class="hc-bar-track"><div class="hc-bar-fill" style="--fill:78%"></div></div>
+                    </div>
+                    <div class="hc-bar">
+                        <span class="hc-bar-label">Revenue</span>
+                        <div class="hc-bar-track"><div class="hc-bar-fill" style="--fill:85%"></div></div>
+                    </div>
+                </div>
+
+                <div class="hero-badge" data-hero-anim="600" data-speed="0.02">
+                    <div class="hero-badge-icon">🔥</div>
+                    <div class="hero-badge-text">
+                        23 new leads this week
+                        <span>+340% from last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MARQUEE ========== -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-text">Instagram Growth</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Content Strategy</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">LinkedIn Marketing</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Brand Positioning</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Lead Generation</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Community Building</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Reels & Short-Form</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Paid Social Ads</span><span class="marquee-diamond"></span></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-item"><span class="marquee-text">Instagram Growth</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Content Strategy</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">LinkedIn Marketing</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Brand Positioning</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Lead Generation</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Community Building</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Reels & Short-Form</span><span class="marquee-diamond"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Paid Social Ads</span><span class="marquee-diamond"></span></div>
+        </div>
+    </div>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Precision strategies for <em>every layer</em> of your social presence</h2>
+                <p class="section-desc">We don't just post content — we build systems that compound your growth month over month.</p>
+            </div>
+
+            <div class="services-grid" data-stagger>
+                <div class="svc-card">
+                    <span class="svc-num">01</span>
+                    <div class="svc-icon">📐</div>
+                    <h3>Social Media Strategy</h3>
+                    <p>Custom-built playbooks with audience mapping, competitor analysis, content pillars, and platform-specific roadmaps aligned to your revenue goals.</p>
+                </div>
+                <div class="svc-card">
+                    <span class="svc-num">02</span>
+                    <div class="svc-icon">✍️</div>
+                    <h3>Content Creation</h3>
+                    <p>Scroll-stopping carousels, reels, and copy that reflects your brand voice — designed to educate, engage, and convert your ideal audience.</p>
+                </div>
+                <div class="svc-card">
+                    <span class="svc-num">03</span>
+                    <div class="svc-icon">📈</div>
+                    <h3>Growth & Engagement</h3>
+                    <p>Data-driven tactics including hashtag strategies, collaboration outreach, community management, and engagement loops that build real followers.</p>
+                </div>
+                <div class="svc-card">
+                    <span class="svc-num">04</span>
+                    <div class="svc-icon">🎯</div>
+                    <h3>Lead Generation</h3>
+                    <p>Turn attention into revenue with DM funnels, lead magnets, landing page integration, and social-first sales systems that nurture and close.</p>
+                </div>
+                <div class="svc-card">
+                    <span class="svc-num">05</span>
+                    <div class="svc-icon">🧠</div>
+                    <h3>Brand Positioning</h3>
+                    <p>Define what makes you unforgettable. We refine your messaging, visual identity, and positioning to own your niche across every platform.</p>
+                </div>
+                <div class="svc-card">
+                    <span class="svc-num">06</span>
+                    <div class="svc-icon">📊</div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Monthly deep-dives with actionable insights — tracking reach, engagement, conversions, and ROI so every decision is backed by data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROCESS ========== -->
+    <section class="section process" id="process">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">How We Work</div>
+                <h2 class="section-title">A proven anatomy for <em>sustainable growth</em></h2>
+                <p class="section-desc">Four phases. No guesswork. Just a methodical system that compounds results.</p>
+            </div>
+
+            <div class="process-track" data-stagger>
+                <div class="proc-step">
+                    <div class="proc-num">01</div>
+                    <h3>Discovery & Audit</h3>
+                    <p>We dissect your current social presence, audience demographics, competitor landscape, and content performance to find opportunities others miss.</p>
+                </div>
+                <div class="proc-step">
+                    <div class="proc-num">02</div>
+                    <h3>Strategy Blueprint</h3>
+                    <p>A tailored roadmap with content pillars, posting cadence, platform priorities, and growth tactics — all mapped to your unique objectives.</p>
+                </div>
+                <div class="proc-step">
+                    <div class="proc-num">03</div>
+                    <h3>Execute & Optimize</h3>
+                    <p>We launch, monitor, and iterate in real-time. Every post, every campaign, every engagement touchpoint is crafted with intentionality.</p>
+                </div>
+                <div class="proc-step">
+                    <div class="proc-num">04</div>
+                    <h3>Scale & Compound</h3>
+                    <p>Double down on what works. We scale winning formats, expand to new platforms, and build systems that grow without burning out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RESULTS ========== -->
+    <section class="section results" id="results">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">Proven Results</div>
+                <h2 class="section-title" style="color:var(--white)">Numbers that speak <em style="color:var(--pink)">louder</em> than promises</h2>
+                <p class="section-desc">Real metrics from real clients. No vanity numbers — just growth that matters.</p>
+            </div>
+
+            <div class="results-grid" data-stagger>
+                <div class="res-card">
+                    <div class="res-num"><span data-count="200" data-suffix="+">0</span></div>
+                    <div class="res-label">Brands Served</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-num"><span data-count="12" data-suffix="M+">0</span></div>
+                    <div class="res-label">Total Reach</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-num"><span data-count="3.8" data-suffix="×">0</span></div>
+                    <div class="res-label">Average ROI</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-num"><span data-count="50" data-suffix="K+">0</span></div>
+                    <div class="res-label">Leads Generated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">Client Stories</div>
+                <h2 class="section-title">Trusted by founders who <em>demand results</em></h2>
+            </div>
+        </div>
+
+        <div class="testi-track-wrap">
+            <div class="testi-track">
+                <!-- Card 1 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"Within 60 days, our Instagram went from 2K to 18K followers — but more importantly, our DM inquiries tripled. The strategy was surgical."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">R</div>
+                        <div><div class="testi-name">Ritika Sharma</div><div class="testi-role">Founder, Luxe Skincare Co.</div></div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"They didn't just grow our following — they built a community. Our engagement rate went from 1.2% to 8.7% and our pipeline has never been stronger."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">A</div>
+                        <div><div class="testi-name">Arjun Mehta</div><div class="testi-role">CEO, TechScale Solutions</div></div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"I was skeptical about social media marketing. Three months in, I closed my highest-ticket client ever — directly from a LinkedIn post they crafted."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">P</div>
+                        <div><div class="testi-name">Priya Nair</div><div class="testi-role">Business Coach & Consultant</div></div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"The content system they built runs like clockwork. We went from posting randomly to having a 90-day content calendar that actually converts."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">D</div>
+                        <div><div class="testi-name">Dev Patel</div><div class="testi-role">Founder, Nomad Studio</div></div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"Our brand went from invisible to industry-recognized in under six months. The positioning work alone was worth 10x what we paid."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">S</div>
+                        <div><div class="testi-name">Sneha Kapoor</div><div class="testi-role">Co-founder, Bloom Finance</div></div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"They understood our audience better than we did. Every piece of content felt on-brand and the growth was organic, not forced."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">V</div>
+                        <div><div class="testi-name">Vikram Singh</div><div class="testi-role">Director, Alpine Wellness</div></div>
+                    </div>
+                </div>
+
+                <!-- Duplicate set for seamless infinite scroll -->
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"Within 60 days, our Instagram went from 2K to 18K followers — but more importantly, our DM inquiries tripled. The strategy was surgical."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">R</div>
+                        <div><div class="testi-name">Ritika Sharma</div><div class="testi-role">Founder, Luxe Skincare Co.</div></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"They didn't just grow our following — they built a community. Our engagement rate went from 1.2% to 8.7% and our pipeline has never been stronger."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">A</div>
+                        <div><div class="testi-name">Arjun Mehta</div><div class="testi-role">CEO, TechScale Solutions</div></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"I was skeptical about social media marketing. Three months in, I closed my highest-ticket client ever — directly from a LinkedIn post they crafted."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">P</div>
+                        <div><div class="testi-name">Priya Nair</div><div class="testi-role">Business Coach & Consultant</div></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"The content system they built runs like clockwork. We went from posting randomly to having a 90-day content calendar that actually converts."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">D</div>
+                        <div><div class="testi-name">Dev Patel</div><div class="testi-role">Founder, Nomad Studio</div></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"Our brand went from invisible to industry-recognized in under six months. The positioning work alone was worth 10x what we paid."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">S</div>
+                        <div><div class="testi-name">Sneha Kapoor</div><div class="testi-role">Co-founder, Bloom Finance</div></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <blockquote>"They understood our audience better than we did. Every piece of content felt on-brand and the growth was organic, not forced."</blockquote>
+                    <div class="testi-author">
+                        <div class="testi-avatar">V</div>
+                        <div><div class="testi-name">Vikram Singh</div><div class="testi-role">Director, Alpine Wellness</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== AUDIENCE ========== -->
+    <section class="section audience">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">Who We Serve</div>
+                <h2 class="section-title">Your path to social media <em>dominance</em></h2>
+                <p class="section-desc">Whether you're scaling a business or building a personal brand — we meet you where you are.</p>
+            </div>
+
+            <div class="audience-grid">
+                <div class="aud-card aud-card--dark" data-reveal>
+                    <div class="aud-card-label">For Business Owners</div>
+                    <h3>Scale your brand beyond word-of-mouth</h3>
+                    <p>Through deep industry insights and battle-tested strategies, we'll streamline your marketing, optimize your online presence, and build a social-first growth engine that works while you sleep.</p>
+                    <a href="#contact" class="btn btn--fill">
+                        Book a Strategy Call <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+                <div class="aud-card aud-card--pink" data-reveal>
+                    <div class="aud-card-label">For Freelancers & Creators</div>
+                    <h3>Turn your expertise into a magnet</h3>
+                    <p>Attract high-value clients, build thought leadership, and establish yourself as the go-to expert in your niche. We craft personal brand strategies that command attention and premium pricing.</p>
+                    <a href="#contact" class="btn btn--dark">
+                        Get Started <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-visual" data-reveal="scale">
+                    <div class="about-visual-shape"></div>
+                    <div class="about-badge">
+                        <div class="about-badge-num">5+ Years</div>
+                        <div class="about-badge-label">In Social Media Marketing</div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <div class="section-label" data-reveal>About Us</div>
+                    <h2 class="section-title" data-reveal>We don't do generic. <em>We do anatomy.</em></h2>
+                    <p class="section-desc" data-reveal>The Marketing Anatomy was built on a simple belief — great social media isn't about going viral. It's about building a system that consistently turns strangers into followers, followers into leads, and leads into loyal customers.</p>
+                    <p class="section-desc" data-reveal style="margin-top:0.5rem">We work closely with founders, service businesses, and ambitious freelancers to build social presences that are bold in strategy and refined in execution.</p>
+
+                    <div class="check-list" data-reveal>
+                        <div class="check-item">
+                            <div class="check-dot"></div>
+                            <span>Proven strategies to grow your following and increase engagement</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-dot"></div>
+                            <span>Expert guidance to generate quality leads and boost revenue</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-dot"></div>
+                            <span>Personalized approach tailored to your unique business goals</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-dot"></div>
+                            <span>Ongoing support in the ever-changing social media landscape</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn--dark" data-reveal data-magnetic>
+                        Work With Us <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NEWSLETTER ========== -->
+    <section class="section newsletter">
+        <div class="container">
+            <div class="section-label" data-reveal>Stay Sharp</div>
+            <h2 class="section-title" data-reveal>Get weekly <em>growth insights</em> in your inbox</h2>
+            <p class="section-desc" data-reveal>Actionable social media tips, trend breakdowns, and strategies that actually work — delivered every Tuesday.</p>
+
+            <div data-reveal>
+                <form class="nl-form" id="nlForm">
+                    <input type="email" class="nl-input" placeholder="Your email address" required aria-label="Email address">
+                    <button type="submit" class="btn btn--fill">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="section cta-section" id="contact">
+        <div class="container">
+            <div class="section-label" style="justify-content:center" data-reveal>Ready to Grow?</div>
+            <h2 class="section-title" style="margin:0 auto; text-align:center" data-reveal>
+                Let's build your brand's<br><em>next chapter</em> together
+            </h2>
+            <p class="cta-sub" data-reveal>Book a free 30-minute strategy session and get a custom growth roadmap for your brand — no strings attached.</p>
+            <div style="text-align:center; position:relative; z-index:1" data-reveal>
+                <a href="mailto:hello@themarketinganatomy.com" class="btn btn--dark" style="font-size:0.95rem; padding:1rem 2.4rem" data-magnetic>
+                    Book Your Free Strategy Call <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <div class="nav-logo-mark"></div>
+                        <span class="nav-logo-text" style="color:var(--white)">The Marketing Anatomy</span>
+                    </a>
+                    <p>Strategic social media management for service businesses and ambitious founders who refuse to blend in.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <a href="services.html">Services</a>
+                    <a href="work.html">Work</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html#strategy">Social Media Strategy</a>
+                    <a href="services.html#content">Content Creation</a>
+                    <a href="services.html#leads">Lead Generation</a>
+                    <a href="services.html#positioning">Brand Positioning</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="mailto:hello@themarketinganatomy.com">hello@themarketinganatomy.com</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 The Marketing Anatomy. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social" aria-label="Instagram">IG</a>
+                    <a href="#" class="footer-social" aria-label="LinkedIn">Li</a>
+                    <a href="#" class="footer-social" aria-label="YouTube">YT</a>
+                    <a href="#" class="footer-social" aria-label="Twitter/X">X</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
