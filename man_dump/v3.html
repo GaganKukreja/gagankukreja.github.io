@@ -1,0 +1,3044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marketing Anatomy — Personal branding for founders who'd rather build.</title>
+<meta name="description" content="A studio that ghost-writes the LinkedIn, Twitter and newsletter of founders, operators and creators. Built by Shweta Kukreja." />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+<style>
+/* ─────────────────────────────────
+   tokens — light only
+   ───────────────────────────────── */
+:root{
+  --pink:        #f3cdd5;       /* signature */
+  --pink-soft:   #faecef;       /* warm canvas */
+  --pink-deep:   #e7a8b5;       /* hover / accent */
+  --cream:       #faf6f1;       /* page bg */
+  --cream-2:     #f3ede4;       /* section alt */
+  --cream-3:     #ece4d7;       /* divider tint */
+  --ink:         #141414;       /* primary text */
+  --ink-2:       #3a3635;       /* secondary text */
+  --ink-3:       #6a6562;       /* tertiary */
+  --rule:        #e1d8cc;       /* hairlines */
+  --serif: "Fraunces", "Times New Roman", serif;
+  --sans:  "Inter", system-ui, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, monospace;
+
+
+  /* 8pt spacing scale */
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px; --s8:128px; --s9:160px;
+}
+
+
+/* ─────────────────────────────────
+   reset
+   ───────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  cursor:none;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:none;color:inherit;cursor:none}
+::selection{background:var(--pink);color:var(--ink)}
+
+
+/* film grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:9998;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:.5;
+  mix-blend-mode:multiply;
+}
+
+
+/* custom cursor */
+.cursor{
+  position:fixed;top:0;left:0;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--ink);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .25s, height .25s, background .25s, opacity .25s;
+  mix-blend-mode:multiply;
+}
+.cursor.hover{width:64px;height:64px;background:var(--pink-deep);mix-blend-mode:multiply}
+.cursor.text-h{width:6px;height:32px;border-radius:2px;background:var(--ink)}
+.cursor-trail{
+  position:fixed;top:0;left:0;
+  width:5px;height:5px;border-radius:50%;
+  background:var(--ink);
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  opacity:.3;
+}
+@media (max-width:768px){
+  body{cursor:auto}
+  button,a,input,textarea,select{cursor:pointer}
+  .cursor,.cursor-trail{display:none}
+}
+
+
+/* ─────────────────────────────────
+   nav
+   ───────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .3s, backdrop-filter .3s, padding .3s;
+}
+.nav.scrolled{
+  background:rgba(250,246,241,.85);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  padding:12px 32px;
+  border-bottom:1px solid var(--rule);
+}
+.nav .brand{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:18px;
+  letter-spacing:-.01em;
+  display:flex;align-items:center;gap:10px;
+}
+.nav .brand .pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--ink);
+  position:relative;
+}
+.nav .brand .pulse::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid var(--ink);
+  animation:ring 2s ease-out infinite;
+}
+@keyframes ring{
+  0%{transform:scale(.8);opacity:.8}
+  100%{transform:scale(1.8);opacity:0}
+}
+.nav-links{
+  display:flex;gap:28px;
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+}
+.nav-links a{position:relative;padding:6px 2px;color:var(--ink-2);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;
+  height:1px;background:var(--ink);
+}
+.nav-cta{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:var(--cream);
+  padding:10px 18px;border-radius:99px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .2s, background .2s;
+  position:relative;overflow:hidden;
+}
+.nav-cta:hover{background:var(--pink-deep);color:var(--ink);transform:translateY(-1px)}
+.nav-cta .live{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--pink);animation:pulse 1.6s infinite;
+}
+.nav-cta:hover .live{background:var(--ink)}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(1.4)}
+}
+
+
+@media (max-width:860px){
+  .nav-links{display:none}
+  .nav{padding:14px 18px}
+  .nav.scrolled{padding:10px 18px}
+}
+
+
+/* ─────────────────────────────────
+   typography
+   ───────────────────────────────── */
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:-.025em;
+  line-height:.96;
+}
+h1{font-size:clamp(56px,9vw,160px);font-weight:300}
+h2{font-size:clamp(40px,6.5vw,108px);line-height:.92;font-weight:300}
+h3{font-size:clamp(28px,3.5vw,52px);line-height:1.05}
+h4{font-size:clamp(20px,2vw,28px);line-height:1.15}
+.italic{font-style:italic}
+p.lead{
+  font-size:clamp(17px,1.5vw,21px);
+  line-height:1.5;
+  color:var(--ink-2);
+  font-weight:300;
+}
+
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{
+  content:"";width:24px;height:1px;background:var(--ink-3);
+}
+
+
+/* ─────────────────────────────────
+   layout
+   ───────────────────────────────── */
+.section{padding:var(--s8) var(--s4);position:relative}
+.wrap{max-width:1280px;margin:0 auto}
+
+
+.page{display:none}
+.page.active{display:block;animation:pageIn .7s cubic-bezier(.2,.8,.2,1)}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+
+.reveal{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}
+
+
+/* ─────────────────────────────────
+   buttons (uniform)
+   ───────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:18px 28px;
+  border-radius:99px;
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--ink);color:var(--cream);
+  border:1px solid var(--ink);
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;white-space:nowrap;
+}
+.btn .arrow{
+  font-family:var(--serif);font-style:italic;font-size:18px;
+  transition:transform .3s;letter-spacing:0;
+}
+.btn:hover{background:var(--pink-deep);color:var(--ink);border-color:var(--pink-deep);transform:translateY(-2px)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn.pink{background:var(--pink);color:var(--ink);border-color:var(--pink)}
+.btn.pink:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+
+/* magnetic wrapper */
+.magnetic{display:inline-block;will-change:transform}
+
+
+/* ═══════════════════════════════════
+   HERO
+   ═══════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  background:var(--pink-soft);
+  position:relative;
+  padding:140px 32px 80px;
+  overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 47px,rgba(20,20,20,.04) 47px,rgba(20,20,20,.04) 48px),
+    repeating-linear-gradient(90deg,transparent 0,transparent 47px,rgba(20,20,20,.04) 47px,rgba(20,20,20,.04) 48px);
+}
+
+
+.hero-wrap{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;width:100%;
+}
+
+
+.hero-meta-top{
+  display:flex;justify-content:space-between;
+  margin-bottom:var(--s6);
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);
+  flex-wrap:wrap;gap:var(--s2);
+}
+.hero-meta-top .live{
+  display:inline-flex;align-items:center;gap:8px;
+}
+.hero-meta-top .live .d{
+  width:6px;height:6px;border-radius:50%;background:#16a34a;animation:pulse 1.6s infinite;
+}
+
+
+.hero h1{
+  font-size:clamp(64px,11vw,200px);
+  line-height:.84;
+  letter-spacing:-.04em;
+  color:var(--ink);
+  font-weight:300;
+}
+.hero h1 .it{font-style:italic}
+.hero h1 .underline{
+  position:relative;display:inline-block;
+}
+.hero h1 .underline svg{
+  position:absolute;
+  bottom:-8px;left:-4%;width:108%;height:18px;
+  pointer-events:none;
+}
+.hero h1 .underline svg path{
+  fill:none;stroke:var(--pink-deep);stroke-width:6;stroke-linecap:round;
+  stroke-dasharray:600;stroke-dashoffset:600;
+  animation:draw 1.6s .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+
+.hero-bottom{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:var(--s6);
+  align-items:end;
+  margin-top:var(--s6);
+}
+.hero-bottom .sub{
+  font-family:var(--serif);
+  font-size:clamp(18px,1.7vw,24px);
+  line-height:1.4;
+  font-weight:300;
+  color:var(--ink-2);
+  max-width:560px;
+}
+.hero-bottom .sub em{font-style:italic;color:var(--ink)}
+
+
+.hero-cta-row{
+  display:flex;align-items:center;gap:var(--s3);
+  flex-wrap:wrap;justify-self:end;
+}
+.hero-trust{
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  display:flex;flex-direction:column;gap:4px;
+}
+.hero-trust .nm{
+  font-family:var(--serif);font-size:18px;letter-spacing:-.01em;color:var(--ink);text-transform:none;font-style:italic;
+}
+
+
+@media (max-width:900px){
+  .hero-bottom{grid-template-columns:1fr;gap:var(--s4)}
+  .hero-cta-row{justify-self:start}
+}
+
+
+/* anatomical callouts */
+.callout{
+  position:absolute;
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;
+  pointer-events:none;
+  opacity:0;
+  animation:fadeIn 1s 1.4s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+.callout .ln{display:inline-block;width:48px;height:1px;background:var(--ink-2)}
+.callout .dt{width:7px;height:7px;border-radius:50%;border:1px solid var(--ink-2);background:var(--pink)}
+
+
+.callout-1{top:18%;left:4%}
+.callout-2{top:32%;right:6%;flex-direction:row-reverse;text-align:right}
+.callout-3{bottom:22%;right:14%}
+
+
+@media (max-width:1100px){.callout{display:none}}
+
+
+/* scroll cue */
+.scroll-cue{
+  position:absolute;bottom:24px;left:50%;
+  transform:translateX(-50%);
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);
+  display:flex;align-items:center;gap:10px;
+}
+.scroll-cue .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--ink);animation:bob 1.5s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);opacity:1}
+  50%{transform:translateY(6px);opacity:.4}
+}
+
+
+/* ═══════════════════════════════════
+   marquee — scroll velocity reactive
+   ═══════════════════════════════════ */
+.marquee-wrap{
+  background:var(--ink);
+  color:var(--cream);
+  padding:32px 0;
+  overflow:hidden;
+  position:relative;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+}
+.marquee{
+  display:flex;gap:64px;
+  white-space:nowrap;
+  font-family:var(--serif);
+  font-size:clamp(36px,5.5vw,76px);
+  font-style:italic;
+  font-weight:300;
+  letter-spacing:-.02em;
+  will-change:transform;
+}
+.marquee span{display:inline-flex;align-items:center;gap:64px}
+.marquee .star{
+  color:var(--pink);
+  display:inline-block;
+  font-style:normal;
+}
+.marquee .star.spin{animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+
+/* ═══════════════════════════════════
+   value prop strip — first ask
+   ═══════════════════════════════════ */
+.promise{padding:var(--s8) var(--s4);background:var(--cream)}
+.promise .wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:var(--s7);
+  align-items:start;
+}
+.promise .lhs h2{
+  font-size:clamp(40px,5.5vw,84px);
+  line-height:.95;
+  letter-spacing:-.03em;
+}
+.promise .lhs h2 em{font-style:italic;color:var(--ink-2)}
+.promise .lhs .pad{margin-top:var(--s4)}
+.promise .rhs{
+  display:flex;flex-direction:column;gap:var(--s2);
+  padding-top:var(--s5);
+}
+.promise .rhs .bullet{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:var(--s2);
+  padding:var(--s3) 0;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+}
+.promise .rhs .bullet:last-child{border-bottom:none}
+.promise .rhs .bullet .num{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.16em;
+  color:var(--ink-3);
+  padding-top:5px;
+}
+.promise .rhs .bullet h4{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(20px,2vw,26px);
+  margin-bottom:6px;
+}
+.promise .rhs .bullet p{font-size:14px;color:var(--ink-2);line-height:1.55;max-width:480px}
+
+
+@media (max-width:900px){
+  .promise .wrap{grid-template-columns:1fr;gap:var(--s4)}
+  .promise .rhs{padding-top:0}
+}
+
+
+/* ═══════════════════════════════════
+   services preview (anatomy list)
+   ═══════════════════════════════════ */
+.anatomy{padding:var(--s9) var(--s4) var(--s8);background:var(--cream-2)}
+.anatomy-head{
+  display:grid;grid-template-columns:1.2fr 1fr;
+  gap:var(--s5);align-items:end;
+  margin-bottom:var(--s6);
+}
+.anatomy-head .right{justify-self:end;max-width:420px;text-align:right}
+@media (max-width:900px){
+  .anatomy-head{grid-template-columns:1fr}
+  .anatomy-head .right{justify-self:start;text-align:left}
+}
+
+
+.svc-list{border-top:1px solid var(--ink)}
+.svc-row{
+  display:grid;
+  grid-template-columns:60px 1fr 2fr 1.2fr 60px;
+  gap:var(--s4);
+  align-items:center;
+  padding:32px 0;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  transition:padding .5s cubic-bezier(.2,.8,.2,1), background .4s;
+  cursor:none;
+}
+.svc-row:hover{padding:44px 16px;background:var(--pink-soft)}
+.svc-row:hover .svc-img{opacity:1;transform:translate(0,-50%) rotate(-2deg) scale(1)}
+.svc-row .num{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;color:var(--ink-3);
+}
+.svc-row .name{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.6vw,52px);
+  font-weight:300;
+  letter-spacing:-.02em;
+  line-height:1;
+  transition:font-style .3s, color .3s;
+}
+.svc-row:hover .name{font-style:italic}
+.svc-row .desc{
+  font-size:14px;color:var(--ink-2);line-height:1.55;
+}
+.svc-row .tags{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+.svc-row .tags span{
+  border:1px solid var(--rule);background:var(--cream);
+  border-radius:99px;padding:5px 10px;
+}
+.svc-row:hover .tags span{border-color:var(--ink);background:var(--pink)}
+.svc-row .arrow{
+  font-family:var(--serif);font-size:30px;text-align:right;font-style:italic;
+  transition:transform .3s;color:var(--ink);
+}
+.svc-row:hover .arrow{transform:translateX(10px)}
+
+
+.svc-img{
+  position:absolute;
+  right:6%;top:50%;
+  width:200px;height:130px;
+  background:var(--pink);
+  border-radius:8px;
+  opacity:0;
+  transform:translate(20px,-50%) rotate(0) scale(.92);
+  transition:all .5s cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);
+  box-shadow:0 30px 50px -25px rgba(0,0,0,.18);
+  text-align:center;padding:14px;
+}
+
+
+@media (max-width:1024px){
+  .svc-row{grid-template-columns:50px 1fr 50px}
+  .svc-row .desc,.svc-row .tags{display:none}
+  .svc-img{display:none}
+}
+
+
+/* anatomy-CTA — the conversion hook after services */
+.anatomy-cta{
+  margin-top:var(--s5);
+  padding:var(--s5);
+  background:var(--cream);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);
+  flex-wrap:wrap;
+}
+.anatomy-cta .copy{font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-style:italic;font-weight:300;max-width:600px}
+.anatomy-cta .copy em{color:var(--ink-3)}
+
+
+/* ═══════════════════════════════════
+   vitals — animated counters
+   ═══════════════════════════════════ */
+.vitals{padding:var(--s9) var(--s4);background:var(--cream)}
+.vitals .head{
+  text-align:center;max-width:780px;margin:0 auto var(--s6);
+}
+.vitals h2 em{font-style:italic;color:var(--ink-3)}
+
+
+.vitals-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:var(--s2);
+}
+.vital{
+  background:var(--pink-soft);
+  border:1px solid var(--rule);
+  padding:var(--s5) var(--s3);
+  border-radius:12px;
+  display:flex;flex-direction:column;gap:var(--s2);
+  position:relative;
+  overflow:hidden;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+}
+.vital:hover{transform:translateY(-4px);background:var(--pink);border-color:var(--ink)}
+.vital .label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);
+}
+.vital .num{
+  font-family:var(--serif);
+  font-size:clamp(48px,6vw,92px);
+  font-weight:300;
+  letter-spacing:-.04em;
+  line-height:.9;
+  color:var(--ink);
+}
+.vital .num .sm{font-size:.4em;vertical-align:super;font-style:italic;color:var(--ink-3);margin-left:2px}
+.vital .desc{font-size:13px;color:var(--ink-2);line-height:1.5}
+.vital .ring{
+  position:absolute;
+  width:120px;height:120px;border-radius:50%;
+  border:1px solid var(--ink);
+  bottom:-60px;right:-60px;
+  opacity:.2;
+  transition:transform .6s, opacity .4s;
+}
+.vital:hover .ring{transform:scale(1.4);opacity:.4}
+
+
+@media (max-width:900px){.vitals-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.vitals-grid{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════
+   case studies (work preview)
+   ═══════════════════════════════════ */
+.cases-section{padding:var(--s9) var(--s4);background:var(--cream-2)}
+.cases-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:end;
+  margin-bottom:var(--s6);
+}
+@media (max-width:768px){.cases-head{grid-template-columns:1fr}}
+
+
+.cases{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3);
+}
+.case{
+  position:relative;
+  background:var(--cream);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:var(--s4);
+  display:flex;flex-direction:column;gap:var(--s2);
+  min-height:380px;
+  transition:all .45s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
+  cursor:none;
+}
+.case:hover{transform:translateY(-6px);box-shadow:0 30px 50px -25px rgba(0,0,0,.15);border-color:var(--ink)}
+
+
+.case .meta{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);
+}
+.case .name{
+  font-family:var(--serif);
+  font-size:clamp(28px,3vw,42px);
+  font-weight:300;letter-spacing:-.02em;line-height:1.05;
+}
+.case .name em{font-style:italic;color:var(--ink-3);transition:color .3s}
+.case:hover .name em{color:var(--ink)}
+.case .desc{font-size:14px;color:var(--ink-2);line-height:1.55;flex:1}
+.case .stats{
+  display:flex;gap:var(--s2);
+  padding-top:var(--s2);border-top:1px solid var(--rule);
+}
+.case .stats div{flex:1}
+.case .stats .n{
+  font-family:var(--serif);
+  font-size:clamp(22px,2vw,32px);
+  font-weight:400;letter-spacing:-.02em;color:var(--ink);
+}
+.case .stats .l{
+  font-family:var(--mono);
+  font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:2px;
+}
+.case .arr{
+  position:absolute;top:24px;right:24px;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--pink);
+  display:grid;place-items:center;
+  font-family:var(--serif);font-size:18px;font-style:italic;color:var(--ink);
+  transition:transform .3s, background .3s;
+}
+.case:hover .arr{transform:rotate(-45deg) scale(1.1);background:var(--ink);color:var(--pink)}
+
+
+.case.large{grid-column:span 7;background:var(--pink-soft);border-color:var(--pink-deep)}
+.case.large .name{font-size:clamp(34px,4.2vw,56px)}
+.case.med{grid-column:span 5}
+.case.full{grid-column:span 12;background:var(--pink);border-color:var(--ink);min-height:240px}
+.case.med-2{grid-column:span 6}
+
+
+@media (max-width:1024px){
+  .case.large,.case.med,.case.med-2{grid-column:span 12}
+}
+
+
+/* ═══════════════════════════════════
+   testimonials — horizontal stack
+   ═══════════════════════════════════ */
+.tests{padding:var(--s9) var(--s4);background:var(--cream)}
+.tests-head{margin-bottom:var(--s6);display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:end}
+@media (max-width:768px){.tests-head{grid-template-columns:1fr}}
+
+
+.tests-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);
+  max-width:1280px;margin:0 auto;
+}
+.test{
+  background:var(--cream);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:var(--s5);
+  position:relative;
+  transition:all .35s;
+}
+.test:hover{background:var(--pink-soft);border-color:var(--pink-deep);transform:translateY(-3px)}
+.test::before{
+  content:"\201C";
+  position:absolute;
+  top:18px;left:24px;
+  font-family:var(--serif);font-size:120px;font-style:italic;
+  color:var(--pink-deep);line-height:1;z-index:0;opacity:.6;
+}
+.test .quote{
+  font-family:var(--serif);
+  font-size:clamp(20px,1.7vw,26px);
+  line-height:1.42;font-weight:300;
+  position:relative;z-index:1;margin-bottom:var(--s4);
+}
+.test .quote em{font-style:italic;color:var(--ink-3)}
+.test .who{
+  display:flex;align-items:center;gap:var(--s2);
+  padding-top:var(--s3);border-top:1px solid var(--rule);
+}
+.test .who .av{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--pink);
+  display:grid;place-items:center;
+  font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);
+}
+.test .who .name{font-weight:500;font-size:14px}
+.test .who .role{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+}
+
+
+@media (max-width:768px){.tests-grid{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════
+   newsletter section (light)
+   ═══════════════════════════════════ */
+.news{padding:var(--s9) var(--s4);background:var(--pink);position:relative;overflow:hidden}
+.news::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 47px,rgba(20,20,20,.05) 47px,rgba(20,20,20,.05) 48px),
+    repeating-linear-gradient(90deg,transparent 0,transparent 47px,rgba(20,20,20,.05) 47px,rgba(20,20,20,.05) 48px);
+  pointer-events:none;
+}
+.news-wrap{max-width:980px;margin:0 auto;position:relative;text-align:center}
+.news .badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:var(--pink);
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:9px 16px;border-radius:99px;
+  margin-bottom:var(--s4);
+}
+.news .badge .live{
+  width:6px;height:6px;border-radius:50%;background:var(--pink);animation:pulse 1.6s infinite;
+}
+.news h2{
+  font-size:clamp(48px,7.5vw,116px);
+  color:var(--ink);font-weight:300;
+}
+.news h2 em{font-style:italic;color:var(--ink-3)}
+.news p.lead{margin:var(--s4) auto var(--s5);color:var(--ink-2);max-width:580px}
+
+
+.news-form{
+  display:flex;
+  max-width:520px;margin:0 auto;
+  background:var(--cream);
+  border:1px solid var(--ink);
+  border-radius:99px;
+  padding:5px 5px 5px 24px;
+  gap:8px;align-items:center;
+  transition:transform .3s, box-shadow .3s;
+}
+.news-form:focus-within{transform:translateY(-2px);box-shadow:0 20px 40px -20px rgba(0,0,0,.25)}
+.news-form input{
+  flex:1;border:none;background:transparent;
+  font-family:var(--sans);font-size:15px;color:var(--ink);
+  outline:none;padding:14px 0;
+}
+.news-form input::placeholder{color:var(--ink-3);opacity:.7}
+.news-form button{
+  background:var(--ink);color:var(--cream);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 22px;border-radius:99px;
+  transition:background .2s, transform .2s;
+}
+.news-form button:hover{background:var(--pink-deep);color:var(--ink);transform:scale(1.04)}
+
+
+.news-stats{
+  display:flex;justify-content:center;gap:var(--s5);
+  margin-top:var(--s5);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-2);flex-wrap:wrap;
+}
+.news-stats div{display:flex;align-items:center;gap:8px}
+.news-stats .n{
+  font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-.02em;color:var(--ink);text-transform:none;
+}
+
+
+/* ═══════════════════════════════════
+   final CTA — light, big, magnetic
+   ═══════════════════════════════════ */
+.final-cta{
+  padding:var(--s9) var(--s4);
+  background:var(--cream);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.final-cta .wrap{position:relative;z-index:2}
+.final-cta h2{
+  font-size:clamp(56px,10vw,180px);
+  color:var(--ink);font-weight:300;letter-spacing:-.04em;
+}
+.final-cta h2 em{font-style:italic;color:var(--ink-3)}
+.final-cta p.lead{margin:var(--s4) auto;max-width:520px}
+
+
+.final-cta .blob{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--pink) 0%,transparent 70%);
+  opacity:.5;
+  pointer-events:none;
+}
+.final-cta .blob.b1{top:-200px;left:-150px;animation:float 14s ease-in-out infinite}
+.final-cta .blob.b2{bottom:-200px;right:-150px;animation:float 16s ease-in-out infinite reverse}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(40px,-40px) scale(1.08)}
+}
+
+
+.cta-row{
+  display:flex;gap:var(--s2);justify-content:center;
+  margin-top:var(--s5);flex-wrap:wrap;
+}
+
+
+/* ═══════════════════════════════════
+   footer (light)
+   ═══════════════════════════════════ */
+.footer{
+  background:var(--cream-2);
+  color:var(--ink);
+  padding:var(--s6) var(--s4) var(--s4);
+  border-top:1px solid var(--rule);
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+}
+.footer-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:var(--s5);
+}
+.footer .brand{
+  font-family:var(--serif);font-size:32px;font-weight:300;
+  letter-spacing:-.02em;color:var(--ink);
+  text-transform:none;margin-bottom:var(--s2);
+}
+.footer .tag{
+  font-family:var(--sans);text-transform:none;letter-spacing:0;
+  color:var(--ink-2);max-width:340px;font-size:13px;line-height:1.5;
+}
+.footer h5{color:var(--ink);margin-bottom:var(--s2);font-size:10px;letter-spacing:.18em}
+.footer ul{list-style:none}
+.footer li{margin-bottom:8px;color:var(--ink-3);transition:color .2s}
+.footer li:hover{color:var(--ink)}
+.footer-bottom{
+  max-width:1280px;margin:var(--s5) auto 0;
+  padding-top:var(--s3);border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;
+  color:var(--ink-3);flex-wrap:wrap;gap:var(--s2);
+}
+.footer-bottom .stat{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--ink-2);
+}
+.footer-bottom .stat .d{
+  width:6px;height:6px;border-radius:50%;background:#16a34a;animation:pulse 1.6s infinite;
+}
+@media (max-width:768px){.footer-grid{grid-template-columns:1fr 1fr}}
+
+
+/* ═══════════════════════════════════
+   ABOUT page
+   ═══════════════════════════════════ */
+.about-hero{
+  background:var(--pink-soft);padding:160px 32px 80px;
+  position:relative;overflow:hidden;
+}
+.about-hero .wrap{position:relative}
+.about-hero h1{
+  font-size:clamp(64px,10vw,180px);color:var(--ink);font-weight:300;
+}
+.about-hero h1 em{font-style:italic;color:var(--ink-3)}
+.about-hero h1 .sm{
+  font-size:.22em;vertical-align:top;display:inline-block;margin-left:18px;
+  font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  font-style:normal;color:var(--ink-3);font-weight:400;
+}
+
+
+.about-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1.3fr 1fr;
+  gap:var(--s7);padding:var(--s8) var(--s4);align-items:start;
+}
+.about-grid p{font-size:17px;line-height:1.65;color:var(--ink-2);margin-bottom:var(--s3)}
+.about-grid p .drop{
+  font-family:var(--serif);font-style:italic;
+  font-size:60px;float:left;line-height:.85;
+  margin:6px 12px 0 0;color:var(--ink);
+}
+
+
+.about-card{
+  background:var(--pink-soft);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:var(--s5);
+  position:sticky;top:100px;
+}
+.about-card .label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:var(--s2);
+}
+.about-card h3{
+  font-style:italic;font-size:clamp(28px,3vw,40px);
+  margin-bottom:6px;color:var(--ink);
+}
+.about-card .role{font-size:14px;color:var(--ink-2);margin-bottom:var(--s4)}
+.about-card .specs{border-top:1px solid var(--rule)}
+.about-card .spec-row{
+  display:flex;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+}
+.about-card .spec-row .v{color:var(--ink);font-weight:500}
+.about-card .spec-row .k{color:var(--ink-3)}
+.about-card .cta{
+  margin-top:var(--s4);
+}
+.about-card .cta a{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 22px;border-radius:99px;
+  background:var(--ink);color:var(--cream);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  transition:all .3s;
+}
+.about-card .cta a:hover{background:var(--pink-deep);color:var(--ink)}
+
+
+@media (max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:var(--s5)}
+  .about-card{position:static}
+}
+
+
+/* timeline */
+.timeline{padding:var(--s8) var(--s4);background:var(--cream-2)}
+.timeline-wrap{max-width:1080px;margin:0 auto}
+.timeline-row{
+  display:grid;grid-template-columns:140px 1fr;
+  gap:var(--s5);
+  padding:var(--s4) 0;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+  transition:padding .4s;
+}
+.timeline-row:hover{padding-left:var(--s2)}
+.timeline-row .yr{
+  font-family:var(--serif);
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;font-style:italic;
+  color:var(--ink);letter-spacing:-.02em;line-height:1;
+}
+.timeline-row .body h4{margin-bottom:6px}
+.timeline-row .body p{color:var(--ink-2);font-size:15px;max-width:640px;line-height:1.6}
+
+
+@media (max-width:600px){
+  .timeline-row{grid-template-columns:1fr;gap:var(--s2)}
+}
+
+
+/* values */
+.values{padding:var(--s8) var(--s4);background:var(--cream)}
+.values-grid{
+  max-width:1280px;margin:var(--s5) auto 0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);
+}
+.value{
+  background:var(--cream);border:1px solid var(--rule);
+  border-radius:14px;
+  padding:var(--s4);
+  display:flex;flex-direction:column;gap:var(--s2);
+  min-height:260px;
+  transition:all .35s;
+}
+.value:hover{background:var(--pink-soft);border-color:var(--pink-deep);transform:translateY(-4px)}
+.value .num{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-3)}
+.value h3{font-style:italic;font-size:clamp(24px,2.4vw,32px)}
+.value p{font-size:14px;color:var(--ink-2);line-height:1.6}
+@media (max-width:900px){.values-grid{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════
+   SERVICES page
+   ═══════════════════════════════════ */
+.svc-hero{
+  background:var(--cream);padding:160px 32px 80px;
+  border-bottom:1px solid var(--rule);
+}
+.svc-hero .wrap{max-width:1280px;margin:0 auto}
+.svc-hero h1{font-size:clamp(64px,10vw,180px);font-weight:300;letter-spacing:-.04em;color:var(--ink)}
+.svc-hero h1 em{color:var(--ink-3);font-style:italic}
+.svc-hero p.lead{margin-top:var(--s4);max-width:680px}
+.svc-hero .row{margin-top:var(--s4);display:flex;gap:var(--s2);flex-wrap:wrap}
+
+
+.pkg{padding:var(--s7) var(--s4);border-bottom:1px solid var(--rule);background:var(--cream)}
+.pkg:nth-child(even){background:var(--pink-soft)}
+.pkg .wrap{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:var(--s7);align-items:start;
+}
+.pkg .left .num{
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+}
+.pkg .left h2{
+  font-size:clamp(40px,5vw,72px);margin-top:var(--s2);font-weight:300;
+}
+.pkg .left h2 em{color:var(--ink-3);font-style:italic}
+.pkg .left .price{
+  margin-top:var(--s4);
+  font-family:var(--serif);
+  font-size:clamp(40px,4vw,60px);
+  font-weight:300;color:var(--ink);letter-spacing:-.02em;
+}
+.pkg .left .price .pm{
+  font-size:.32em;color:var(--ink-3);
+  font-family:var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.14em;margin-left:8px;
+}
+.pkg .left .pricenote{
+  margin-top:6px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+}
+.pkg .left .cta{margin-top:var(--s4);display:flex}
+
+
+.includes{border-top:1px solid var(--ink)}
+.inc-row{
+  display:grid;grid-template-columns:200px 1fr;gap:var(--s4);
+  padding:var(--s3) 0;border-bottom:1px solid var(--rule);align-items:start;
+  transition:padding .3s;
+}
+.inc-row:hover{padding-left:var(--s2)}
+.inc-row .k{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);display:flex;align-items:center;gap:10px;
+}
+.inc-row .k .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);display:inline-block}
+.inc-row .v{color:var(--ink-2);font-size:15px;line-height:1.6}
+
+
+@media (max-width:1024px){
+  .pkg .wrap{grid-template-columns:1fr;gap:var(--s4)}
+  .inc-row{grid-template-columns:1fr;gap:6px}
+}
+
+
+/* compare table — light */
+.compare{padding:var(--s8) var(--s4);background:var(--cream-2)}
+.compare h2{text-align:center;margin-bottom:var(--s5)}
+.compare h2 em{color:var(--ink-3);font-style:italic}
+.cmp-table{
+  max-width:1080px;margin:0 auto;
+  border:1px solid var(--ink);
+  border-radius:14px;overflow:hidden;
+  background:var(--cream);
+}
+.cmp-row{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row.head{
+  background:var(--ink);color:var(--cream);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+}
+.cmp-row > div{padding:18px 24px;border-right:1px solid var(--rule)}
+.cmp-row > div:last-child{border-right:none}
+.cmp-row.head > div{border-right:1px solid var(--ink-2)}
+.cmp-row.head > div:last-child{border-right:none}
+.cmp-row .pop{background:var(--pink-soft);color:var(--ink)}
+.cmp-row.head .pop{background:var(--pink);color:var(--ink)}
+.cmp-row .check{color:var(--ink);font-family:var(--serif);font-size:18px;font-style:italic}
+.cmp-row .nope{opacity:.25;font-family:var(--serif);font-size:18px}
+
+
+.cmp-row.bottom{background:var(--pink);color:var(--ink)}
+.cmp-row.bottom > div{border-right:1px solid var(--rule);padding:22px 24px}
+.cmp-row.bottom .pop{background:var(--ink);color:var(--pink)}
+
+
+@media (max-width:768px){
+  .cmp-row{grid-template-columns:1.4fr 1fr 1fr 1fr;font-size:10px}
+  .cmp-row > div{padding:12px 10px}
+}
+
+
+/* ═══════════════════════════════════
+   PORTFOLIO page
+   ═══════════════════════════════════ */
+.port-hero{background:var(--pink-soft);padding:160px 32px 80px}
+.port-hero .wrap{max-width:1280px;margin:0 auto}
+.port-hero h1{font-weight:300;color:var(--ink);font-size:clamp(64px,10vw,180px)}
+.port-hero h1 em{font-style:italic;color:var(--ink-3)}
+.port-hero p.lead{color:var(--ink-2);max-width:680px;margin-top:var(--s4)}
+
+
+.filters{
+  max-width:1280px;margin:var(--s6) auto 0;padding:0 32px;
+  display:flex;gap:8px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:var(--s3);
+}
+.filters .label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);margin-right:var(--s2);align-self:center;
+}
+.filter-btn{
+  padding:8px 16px;border:1px solid var(--rule);border-radius:99px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;
+  transition:all .25s;
+}
+.filter-btn:hover,.filter-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+
+.work-grid{
+  max-width:1280px;margin:var(--s5) auto;padding:0 32px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s4);
+}
+.work-card{
+  background:var(--cream);border:1px solid var(--rule);
+  border-radius:14px;padding:var(--s4);
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  cursor:none;position:relative;overflow:hidden;
+}
+.work-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 50px -25px rgba(0,0,0,.15);
+  border-color:var(--ink);
+}
+.work-card .meta{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:var(--s4);
+}
+.work-card .meta .pill{background:var(--pink);color:var(--ink);padding:4px 10px;border-radius:99px}
+.work-card h3{margin-bottom:var(--s2);font-weight:300;font-size:clamp(28px,2.8vw,40px)}
+.work-card h3 em{color:var(--ink-3);font-style:italic}
+.work-card .who{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);margin-bottom:var(--s3);
+}
+.work-card .desc{color:var(--ink-2);font-size:15px;line-height:1.6;margin-bottom:var(--s3)}
+.work-card .stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);
+  padding:var(--s3);background:var(--pink-soft);border-radius:10px;
+}
+.work-card .stats .n{
+  font-family:var(--serif);
+  font-size:clamp(22px,2.2vw,32px);font-weight:400;color:var(--ink);
+  letter-spacing:-.02em;
+}
+.work-card .stats .l{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:4px;
+}
+@media (max-width:900px){.work-grid{grid-template-columns:1fr}}
+
+
+/* ═══════════════════════════════════
+   NEWSLETTER page
+   ═══════════════════════════════════ */
+.nl-hero{
+  background:var(--pink);padding:160px 32px 80px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.nl-hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 47px,rgba(20,20,20,.05) 47px,rgba(20,20,20,.05) 48px),
+    repeating-linear-gradient(90deg,transparent 0,transparent 47px,rgba(20,20,20,.05) 47px,rgba(20,20,20,.05) 48px);
+}
+.nl-hero .wrap{max-width:980px;margin:0 auto;position:relative}
+.nl-hero h1{font-size:clamp(56px,8vw,140px);color:var(--ink);font-weight:300}
+.nl-hero h1 em{font-style:italic;color:var(--ink-3)}
+.nl-hero p.lead{color:var(--ink-2);max-width:580px;margin:var(--s4) auto 0}
+
+
+.nl-form{
+  display:flex;
+  max-width:520px;margin:var(--s5) auto 0;
+  background:var(--cream);
+  border:1px solid var(--ink);
+  border-radius:99px;
+  padding:5px 5px 5px 24px;
+  gap:8px;align-items:center;
+  transition:transform .3s, box-shadow .3s;
+}
+.nl-form:focus-within{transform:translateY(-2px);box-shadow:0 20px 40px -20px rgba(0,0,0,.25)}
+.nl-form input{
+  flex:1;border:none;background:transparent;
+  font-family:var(--sans);font-size:15px;outline:none;padding:14px 0;color:var(--ink);
+}
+.nl-form input::placeholder{color:var(--ink-3);opacity:.7}
+.nl-form button{
+  background:var(--ink);color:var(--cream);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 22px;border-radius:99px;
+  transition:background .2s, transform .2s;
+}
+.nl-form button:hover{background:var(--pink-deep);color:var(--ink);transform:scale(1.04)}
+
+
+.nl-feature{padding:var(--s8) var(--s4);background:var(--cream)}
+.nl-feature .wrap{max-width:1280px;margin:0 auto}
+.nl-feature h2{margin-bottom:var(--s5)}
+.nl-feature h2 em{color:var(--ink-3);font-style:italic}
+
+
+.archive{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.archive-card{
+  border:1px solid var(--rule);border-radius:14px;
+  padding:var(--s4);background:var(--cream);
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  display:flex;flex-direction:column;gap:var(--s2);
+  cursor:none;
+}
+.archive-card:hover{
+  background:var(--pink-soft);border-color:var(--ink);
+  transform:translateY(-4px);
+}
+.archive-card .meta{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex;justify-content:space-between;
+}
+.archive-card h3{font-style:italic;font-size:clamp(24px,2.4vw,32px);font-weight:400;color:var(--ink)}
+.archive-card p{color:var(--ink-2);font-size:14px;line-height:1.6}
+.archive-card .read{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);margin-top:auto;display:inline-flex;gap:8px;
+}
+.archive-card .read .arr{font-family:var(--serif);font-style:italic}
+@media (max-width:768px){.archive{grid-template-columns:1fr}}
+
+
+/* sample issue */
+.sample-issue{padding:var(--s8) var(--s4);background:var(--pink-soft)}
+.sample-issue .wrap{max-width:760px;margin:0 auto}
+.issue{
+  background:var(--cream);
+  border:1px solid var(--ink);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.2);
+}
+.issue-head{
+  background:var(--ink);color:var(--pink);
+  padding:18px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+}
+.issue-body{padding:var(--s5)}
+.issue-body h3{font-style:italic;color:var(--ink);margin-bottom:var(--s2)}
+.issue-body .pull{
+  font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);margin-bottom:var(--s3);
+  padding-left:var(--s2);border-left:3px solid var(--pink);
+}
+.issue-body p{color:var(--ink-2);margin-bottom:14px;font-size:15px;line-height:1.7}
+.issue-body .pat{
+  margin-top:var(--s2);border-left:3px solid var(--pink);padding:8px 0 8px 20px;color:var(--ink);
+}
+.issue-body .pat strong{font-weight:500}
+.issue-body .sig{margin-top:var(--s4);color:var(--ink-3);font-style:italic}
+
+
+/* ═══════════════════════════════════
+   CONTACT page — LIGHT
+   ═══════════════════════════════════ */
+.contact-hero{
+  background:var(--pink-soft);
+  padding:160px 32px 60px;
+  border-bottom:1px solid var(--rule);
+}
+.contact-hero .wrap{max-width:1280px;margin:0 auto}
+.contact-hero h1{
+  font-size:clamp(64px,10vw,160px);font-weight:300;color:var(--ink);letter-spacing:-.04em;
+}
+.contact-hero h1 em{color:var(--ink-3);font-style:italic}
+.contact-hero p.lead{margin-top:var(--s3);max-width:560px}
+
+
+.contact-section{
+  background:var(--cream);
+  padding:var(--s7) var(--s4) var(--s8);
+}
+.contact-section .wrap{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr;
+  gap:var(--s6);
+}
+
+
+/* progress bar */
+.progress-bar{
+  display:flex;align-items:center;gap:var(--s2);
+  margin-bottom:var(--s5);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);
+}
+.progress-bar .step{
+  display:flex;align-items:center;gap:8px;
+}
+.progress-bar .step .n{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--rule);background:var(--cream);
+  display:grid;place-items:center;font-size:12px;
+  transition:all .3s;
+}
+.progress-bar .step.done .n{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.progress-bar .step.active .n{background:var(--pink);color:var(--ink);border-color:var(--ink)}
+.progress-bar .step.active .label{color:var(--ink)}
+.progress-bar .ln{flex:1;height:1px;background:var(--rule);max-width:80px}
+.progress-bar .step.done + .ln{background:var(--ink)}
+
+
+@media (max-width:600px){
+  .progress-bar .label{display:none}
+}
+
+
+/* form */
+.contact-form{display:flex;flex-direction:column;gap:0}
+
+
+.field{
+  display:flex;flex-direction:column;gap:8px;
+  padding:var(--s3) 0;
+  border-bottom:1px solid var(--rule);
+  transition:padding .3s, background .3s;
+}
+.field:focus-within{padding-left:var(--s2)}
+.field label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.field label .req{color:var(--pink-deep);font-size:14px;line-height:1}
+.field input,.field textarea,.field select{
+  background:transparent;border:none;
+  font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-weight:300;color:var(--ink);
+  outline:none;padding:0;resize:none;width:100%;
+  cursor:text;
+}
+.field select{cursor:none}
+/* newsletter input also gets a text cursor */
+.nl-form input{cursor:text}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3);opacity:.5}
+.field textarea{min-height:80px;line-height:1.4}
+.field select{
+  font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-style:italic;color:var(--ink);
+  appearance:none;cursor:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23141414' stroke-width='1.5' fill='none'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right center;
+  padding-right:24px;
+}
+
+
+/* tappable option grids */
+.opt-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:8px;margin-top:8px;
+}
+.opt{
+  border:1px solid var(--rule);background:var(--cream);
+  padding:14px 16px;border-radius:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-2);
+  transition:all .25s;
+  text-align:left;
+  display:flex;align-items:center;gap:10px;
+  cursor:none;
+}
+.opt:hover{border-color:var(--ink);background:var(--pink-soft);transform:translateY(-2px)}
+.opt.active{background:var(--pink);border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
+.opt .check{
+  width:18px;height:18px;border-radius:50%;
+  border:1px solid var(--ink-3);
+  display:grid;place-items:center;
+  flex-shrink:0;transition:all .25s;
+  font-size:10px;
+}
+.opt.active .check{background:var(--ink);border-color:var(--ink);color:var(--pink)}
+.opt.active .check::after{content:"✓";line-height:1}
+
+
+.budget-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.budget-pills button{
+  border:1px solid var(--rule);border-radius:99px;background:var(--cream);
+  padding:10px 18px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-2);transition:all .25s;
+}
+.budget-pills button:hover{border-color:var(--ink);background:var(--pink-soft);transform:translateY(-2px)}
+.budget-pills button.active{background:var(--pink);color:var(--ink);border-color:var(--ink)}
+
+
+.submit-row{
+  margin-top:var(--s5);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s2);
+}
+.submit{
+  padding:22px 38px;
+  border:1px solid var(--ink);
+  border-radius:99px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--ink);color:var(--cream);
+  transition:all .3s;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.submit:hover{background:var(--pink);color:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
+.submit .arrow{font-family:var(--serif);font-size:18px;font-style:italic}
+.submit-note{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+}
+.submit-note .nm{color:var(--ink)}
+
+
+/* contact side */
+.contact-side h4{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  margin-bottom:var(--s3);color:var(--ink);
+}
+.contact-side .info-block{
+  border-top:1px solid var(--rule);
+  padding:var(--s2) 0;
+}
+.contact-side .info-block .k{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:6px;
+}
+.contact-side .info-block .v{
+  font-family:var(--serif);font-size:18px;font-weight:300;color:var(--ink);
+}
+.contact-side .info-block .v.italic{font-style:italic}
+.contact-side .info-block .v a{border-bottom:1px solid var(--ink);transition:color .2s}
+.contact-side .info-block .v a:hover{color:var(--ink-3)}
+
+
+.contact-side .booking-card{
+  margin-top:var(--s4);
+  background:var(--ink);color:var(--cream);
+  border-radius:14px;padding:var(--s4);
+}
+.contact-side .booking-card .lab{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:var(--s2);
+}
+.contact-side .booking-card h5{
+  font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;margin-bottom:var(--s2);
+  color:var(--cream);text-transform:none;letter-spacing:-.01em;
+}
+.contact-side .booking-card p{font-size:13px;color:rgba(250,246,241,.7);line-height:1.5;margin-bottom:var(--s3)}
+.contact-side .booking-card a.cal{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--pink);color:var(--ink);
+  padding:14px 22px;border-radius:99px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  transition:all .3s;
+}
+.contact-side .booking-card a.cal:hover{background:var(--cream);transform:translateY(-2px)}
+
+
+@media (max-width:1024px){
+  .contact-section .wrap{grid-template-columns:1fr;gap:var(--s4)}
+}
+
+
+/* trust strip on contact */
+.trust-strip{
+  background:var(--pink-soft);
+  padding:var(--s4) var(--s4);
+  border-bottom:1px solid var(--rule);
+}
+.trust-strip .wrap{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);
+  text-align:center;
+}
+.trust-strip .item{
+  display:flex;flex-direction:column;gap:4px;
+}
+.trust-strip .item .n{
+  font-family:var(--serif);font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--ink);
+  letter-spacing:-.02em;line-height:1;
+}
+.trust-strip .item .l{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+}
+@media (max-width:700px){
+  .trust-strip .wrap{grid-template-columns:repeat(2,1fr);gap:var(--s3)}
+}
+</style>
+</head>
+<body>
+
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+
+<!-- nav -->
+<nav class="nav" id="nav">
+  <a href="#home" class="brand" data-link>
+    <span class="pulse"></span>
+    Marketing Anatomy
+  </a>
+  <div class="nav-links">
+    <a href="#home" data-link>Index</a>
+    <a href="#about" data-link>About</a>
+    <a href="#services" data-link>Services</a>
+    <a href="#work" data-link>Work</a>
+    <a href="#newsletter" data-link>Letter</a>
+  </div>
+  <a href="#contact" class="nav-cta magnetic" data-link>
+    <span class="live"></span>
+    Book a call
+  </a>
+</nav>
+
+
+<!-- ═══════════════════════════════════
+     HOME
+     ═══════════════════════════════════ -->
+<main id="home" class="page active">
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+
+    <div class="callout callout-1">
+      <span class="dt"></span><span class="ln"></span>
+      <span>Voice — captured</span>
+    </div>
+    <div class="callout callout-2">
+      <span>Audience — building</span>
+      <span class="ln"></span><span class="dt"></span>
+    </div>
+    <div class="callout callout-3">
+      <span class="dt"></span><span class="ln"></span>
+      <span>Inbound — daily</span>
+    </div>
+
+
+    <div class="hero-wrap">
+      <div class="hero-meta-top">
+        <div>Marketing Anatomy <span style="opacity:.4;margin:0 8px">/</span> Est. 2022 <span style="opacity:.4;margin:0 8px">/</span> Mumbai &middot; Remote</div>
+        <div class="live"><span class="d"></span> Open: 1 founder slot for May</div>
+      </div>
+
+
+      <h1>
+        Personal brands<br/>
+        <span class="it">for founders</span><br/>
+        who'd <span class="underline">rather build<svg viewBox="0 0 400 18" preserveAspectRatio="none"><path d="M2 12 Q 100 2, 200 9 T 398 6"/></svg></span>.
+      </h1>
+
+
+      <div class="hero-bottom">
+        <div class="sub">
+          We ghost-write the LinkedIn, Twitter and newsletter you keep meaning to start. <em>Strategy, writing, engagement, inbound.</em> Done weekly. Reported monthly. <em>You stay focused on the company.</em>
+        </div>
+        <div class="hero-cta-row">
+          <div class="hero-trust">
+            <span class="nm">$1k → $1M</span>
+            <span>Range of pipeline sourced</span>
+          </div>
+          <a href="#contact" class="btn magnetic" data-link>
+            Start a project
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="scroll-cue">
+      <span class="dot"></span>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- MARQUEE -->
+  <section class="marquee-wrap">
+    <div class="marquee" id="marquee">
+      <span>
+        <em class="italic">Founders</em>
+        <span class="star spin">✦</span>
+        Operators
+        <span class="star spin">✦</span>
+        <em class="italic">Investors</em>
+        <span class="star spin">✦</span>
+        Builders
+        <span class="star spin">✦</span>
+        <em class="italic">Creators</em>
+        <span class="star spin">✦</span>
+      </span>
+      <span aria-hidden="true">
+        <em class="italic">Founders</em>
+        <span class="star spin">✦</span>
+        Operators
+        <span class="star spin">✦</span>
+        <em class="italic">Investors</em>
+        <span class="star spin">✦</span>
+        Builders
+        <span class="star spin">✦</span>
+        <em class="italic">Creators</em>
+        <span class="star spin">✦</span>
+      </span>
+    </div>
+  </section>
+
+
+  <!-- PROMISE -->
+  <section class="promise">
+    <div class="wrap">
+      <div class="lhs reveal">
+        <span class="eyebrow">§ 01 — The thesis</span>
+        <h2 style="margin-top:18px">A sharp <em>presence</em>,<br/>not just an account.</h2>
+        <p class="lead pad">Most "social media services" hand you a calendar and disappear. We act like an in-house brand team — embedded in your voice, your category, and your weekly rhythm. The output is content. The actual product is <em class="italic">trust</em>.</p>
+      </div>
+      <div class="rhs">
+        <div class="bullet reveal d1">
+          <div class="num">/ 01</div>
+          <div>
+            <h4>We write in your voice.</h4>
+            <p>Two-week intake before a single post ships. Founders should sound like founders — not like an agency.</p>
+          </div>
+        </div>
+        <div class="bullet reveal d2">
+          <div class="num">/ 02</div>
+          <div>
+            <h4>We ship every week.</h4>
+            <p>5–6 LinkedIn posts, 14 tweets, daily engagement. The unglamorous work that actually compounds.</p>
+          </div>
+        </div>
+        <div class="bullet reveal d3">
+          <div class="num">/ 03</div>
+          <div>
+            <h4>We measure inbound.</h4>
+            <p>Followers are nice. We track real outcomes — DMs from VCs, founder calls booked, journalists writing back.</p>
+          </div>
+        </div>
+        <div class="bullet reveal d4">
+          <div class="num">/ 04</div>
+          <div>
+            <h4>We take one client a month.</h4>
+            <p>Personal brands need attention. We work with founders we'd write about if we weren't writing for them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES PREVIEW -->
+  <section class="anatomy">
+    <div class="wrap">
+      <div class="anatomy-head reveal">
+        <div>
+          <span class="eyebrow">§ 02 — What we do</span>
+          <h2 style="margin-top:18px">A presence,<br/><em class="italic">layer by layer.</em></h2>
+        </div>
+        <div class="right">
+          <p class="lead">Five practices, one method. Pick the surface — we own the rest.</p>
+        </div>
+      </div>
+
+
+      <div class="svc-list">
+        <a class="svc-row" href="#services" data-link data-hover>
+          <div class="num">/ 01</div>
+          <div class="name">LinkedIn</div>
+          <div class="desc">5–6 posts a week. Long-form, carousels, polls. The platform where founders build serious inbound.</div>
+          <div class="tags"><span>Posts</span><span>Carousels</span><span>Outreach</span></div>
+          <div class="arrow">→</div>
+          <div class="svc-img">3M weekly impressions, average</div>
+        </a>
+
+
+        <a class="svc-row" href="#services" data-link data-hover>
+          <div class="num">/ 02</div>
+          <div class="name italic">Twitter / X</div>
+          <div class="desc">Threads, hot-takes, daily replies. The scratchpad of the internet — turned into a discovery engine.</div>
+          <div class="tags"><span>Threads</span><span>Tweets</span><span>Replies</span></div>
+          <div class="arrow">→</div>
+          <div class="svc-img">17.5M impressions, single month</div>
+        </a>
+
+
+        <a class="svc-row" href="#services" data-link data-hover>
+          <div class="num">/ 03</div>
+          <div class="name">Instagram</div>
+          <div class="desc">Carousel design, reels scripts, a feed that doesn't feel like a brand deck. For the visually inclined.</div>
+          <div class="tags"><span>Reels</span><span>Carousels</span><span>Feed</span></div>
+          <div class="arrow">→</div>
+          <div class="svc-img">Designed in-house</div>
+        </a>
+
+
+        <a class="svc-row" href="#services" data-link data-hover>
+          <div class="num">/ 04</div>
+          <div class="name italic">Engagement</div>
+          <div class="desc">Daily comments and DMs from your account. The unglamorous work that builds trust before traffic.</div>
+          <div class="tags"><span>Replies</span><span>Comments</span><span>Trust</span></div>
+          <div class="arrow">→</div>
+          <div class="svc-img">Daily, on your behalf</div>
+        </a>
+
+
+        <a class="svc-row" href="#services" data-link data-hover>
+          <div class="num">/ 05</div>
+          <div class="name">Newsletter</div>
+          <div class="desc">Repurpose social work into an owned audience. Rented attention is fragile — owned isn't.</div>
+          <div class="tags"><span>Bi-weekly</span><span>Owned</span><span>Compounding</span></div>
+          <div class="arrow">→</div>
+          <div class="svc-img">8,400+ on ours, real proof</div>
+        </a>
+      </div>
+
+
+      <div class="anatomy-cta reveal">
+        <div class="copy">
+          See pricing for each, or pick the bundle. <em>Most founders bundle.</em>
+        </div>
+        <a href="#services" class="btn magnetic" data-link>
+          See packages
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VITALS -->
+  <section class="vitals">
+    <div class="head reveal">
+      <span class="eyebrow">§ 03 — Vitals</span>
+      <h2 style="margin-top:18px">Numbers from <em>live patients.</em></h2>
+    </div>
+    <div class="vitals-grid">
+      <div class="vital reveal d1">
+        <div class="ring"></div>
+        <span class="label">Peak weekly reach</span>
+        <span class="num"><span data-count="3" data-suffix="M+">0</span></span>
+        <span class="desc">LinkedIn impressions in a single week. From 3 posts. No boost.</span>
+      </div>
+      <div class="vital reveal d2">
+        <div class="ring"></div>
+        <span class="label">Twitter, single month</span>
+        <span class="num"><span data-count="17.5" data-suffix="M">0</span></span>
+        <span class="desc">Tweet impressions across 273 tweets. 5,812 mentions. Real audiences.</span>
+      </div>
+      <div class="vital reveal d3">
+        <div class="ring"></div>
+        <span class="label">Followers grown</span>
+        <span class="num"><span data-count="66" data-suffix="K">0</span></span>
+        <span class="desc">From 4K to 70K on a single LinkedIn account. Nine months of consistent shipping.</span>
+      </div>
+      <div class="vital reveal d4">
+        <div class="ring"></div>
+        <span class="label">Founders served</span>
+        <span class="num"><span data-count="40" data-suffix="+">0</span></span>
+        <span class="desc">Across SaaS, devtools, fintech, fashion and creator-led companies.</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:64px" class="reveal">
+      <a href="#work" class="btn ghost magnetic" data-link>
+        See the case studies
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- CASES -->
+  <section class="cases-section">
+    <div class="wrap">
+      <div class="cases-head reveal">
+        <div>
+          <span class="eyebrow">§ 04 — Field studies</span>
+          <h2 style="margin-top:18px">Selected <em class="italic">case studies.</em></h2>
+        </div>
+        <div style="text-align:right">
+          <a href="#work" class="btn ghost magnetic" data-link>All studies <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+
+      <div class="cases">
+        <a class="case large reveal" href="#work" data-link data-hover>
+          <div class="arr">↗</div>
+          <div class="meta"><span>Case 01</span><span>SaaS / Devtools</span></div>
+          <div class="name">From <em>4K to 70K</em><br/>on LinkedIn — in nine months.</div>
+          <div class="desc">A technical founder. We rewrote the profile, shipped 5 posts a week, and ran daily engagement against a tight ICP. Nothing boosted.</div>
+          <div class="stats">
+            <div><div class="n">+66K</div><div class="l">Followers</div></div>
+            <div><div class="n">3M+</div><div class="l">Wkly imp.</div></div>
+            <div><div class="n">$420K</div><div class="l">Pipeline</div></div>
+          </div>
+        </a>
+
+
+        <a class="case med reveal d1" href="#work" data-link data-hover>
+          <div class="arr">↗</div>
+          <div class="meta"><span>Case 02</span><span>Creator / X</span></div>
+          <div class="name">12K followers in <em>30 days</em> on Twitter.</div>
+          <div class="desc">Threads + relentless original tweets. 17.5M impressions in a single month. 1.97M profile visits.</div>
+          <div class="stats">
+            <div><div class="n">17.5M</div><div class="l">Impressions</div></div>
+            <div><div class="n">5.8K</div><div class="l">Mentions</div></div>
+          </div>
+        </a>
+
+
+        <a class="case full reveal" href="#work" data-link data-hover>
+          <div class="arr">↗</div>
+          <div class="meta"><span>Case 03</span><span>Founder / multi-platform</span></div>
+          <div class="name">A Forbes feature, two podcast invitations<br/>and inbound from <em>three VCs</em> — in one quarter.</div>
+          <div class="desc">When the writing is sharp and the founder shows up consistently, distribution becomes a recruiting and fundraising tool. Not just an ego metric.</div>
+          <div class="stats">
+            <div><div class="n">3</div><div class="l">VC inbounds</div></div>
+            <div><div class="n">1</div><div class="l">Forbes</div></div>
+            <div><div class="n">12</div><div class="l">Pod invites</div></div>
+            <div><div class="n">∞</div><div class="l">Compounds</div></div>
+          </div>
+        </a>
+
+
+        <a class="case med-2 reveal d1" href="#work" data-link data-hover>
+          <div class="arr">↗</div>
+          <div class="meta"><span>Case 04</span><span>D2C / Fashion</span></div>
+          <div class="name"><em>$1M</em> in luxury fashion sales — sourced through one brand.</div>
+          <div class="desc">Industry storytelling, founder narrative, behind-the-curtain posts. Built trust before pitching anything.</div>
+          <div class="stats">
+            <div><div class="n">$1M</div><div class="l">Year-1 GMV</div></div>
+            <div><div class="n">+220%</div><div class="l">Engagement</div></div>
+          </div>
+        </a>
+
+
+        <a class="case med-2 reveal d2" href="#work" data-link data-hover>
+          <div class="arr">↗</div>
+          <div class="meta"><span>Case 05</span><span>VC / Operator</span></div>
+          <div class="name">From <em>silent</em> to <em>booked-out.</em></div>
+          <div class="desc">Three posts a week. Five months later — calendar full of inbound founder calls, board seat sourced from a comment thread.</div>
+          <div class="stats">
+            <div><div class="n">5 mo</div><div class="l">To traction</div></div>
+            <div><div class="n">~80</div><div class="l">Inbound calls</div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+  <section class="tests">
+    <div class="wrap">
+      <div class="tests-head reveal">
+        <div>
+          <span class="eyebrow">§ 05 — On record</span>
+          <h2 style="margin-top:18px">What founders <em class="italic">actually say.</em></h2>
+        </div>
+        <div style="text-align:right">
+          <p class="lead" style="max-width:380px;justify-self:end">No bots, no incentivized reviews. The people we've worked with, signing their own names.</p>
+        </div>
+      </div>
+
+
+      <div class="tests-grid">
+        <div class="test reveal">
+          <p class="quote">Shweta is the only person I've worked with who treats my LinkedIn like a product. She has a thesis, she ships, and she defends decisions with data.</p>
+          <div class="who">
+            <div class="av">B</div>
+            <div>
+              <div class="name">Balraj S.</div>
+              <div class="role">Founder · Devtools</div>
+            </div>
+          </div>
+        </div>
+        <div class="test reveal d1">
+          <p class="quote">Within four months I had three VC partners in my DMs and a podcast feature lined up. I was getting <em>one</em> inbound a quarter before this.</p>
+          <div class="who">
+            <div class="av">R</div>
+            <div>
+              <div class="name">Raj K.</div>
+              <div class="role">CEO · Series A SaaS</div>
+            </div>
+          </div>
+        </div>
+        <div class="test reveal d2">
+          <p class="quote">It doesn't feel like an agency. It feels like having a brand person who knows your company, knows your voice, and shows up on time, every week.</p>
+          <div class="who">
+            <div class="av">A</div>
+            <div>
+              <div class="name">Aman S.</div>
+              <div class="role">VP Engineering · Fintech</div>
+            </div>
+          </div>
+        </div>
+        <div class="test reveal d3">
+          <p class="quote">The numbers are nice. The thing I didn't expect was the <em>trust</em> — people DM before they buy, before they apply, before they pitch. That's the moat.</p>
+          <div class="who">
+            <div class="av">D</div>
+            <div>
+              <div class="name">Dinesh G.</div>
+              <div class="role">Founder · 3 startups</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- NEWSLETTER -->
+  <section class="news">
+    <div class="news-wrap reveal">
+      <div class="badge"><span class="live"></span> Issue 047 — every Tuesday</div>
+      <h2>The <em>Anatomy</em><br/>Newsletter.</h2>
+      <p class="lead">A weekly dispatch on personal branding, ghost-writing for founders, and what's working on LinkedIn this week. <em class="italic">4 minutes. Free. No fluff.</em></p>
+      <form class="news-form" onsubmit="return handleSubscribe(event)">
+        <input type="email" placeholder="founder@yourcompany.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="news-stats">
+        <div><span class="n">8,400+</span> readers</div>
+        <div><span class="n">62%</span> open rate</div>
+        <div><span class="n">47</span> issues</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">§ 06 — The ask</span>
+        <h2 style="margin-top:18px">Ready for a brand<br/>that <em>compounds?</em></h2>
+        <p class="lead">One slot left for May. Two-week intake before any post ships.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn magnetic" data-link>Book a call <span class="arrow">→</span></a>
+          <a href="#services" class="btn ghost magnetic" data-link>See packages <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════
+     ABOUT
+     ═══════════════════════════════════ -->
+<main id="about" class="page">
+
+
+  <section class="about-hero">
+    <div class="wrap">
+      <span class="eyebrow">§ The studio</span>
+      <h1 style="margin-top:24px">Built by a <em>strategist</em> <span class="sm">/ EST. 2022</span><br/>who actually <em>writes the posts.</em></h1>
+    </div>
+  </section>
+
+
+  <div class="about-grid">
+    <div class="reveal">
+      <span class="eyebrow">/ The story</span>
+      <p style="margin-top:24px"><span class="drop">M</span>arketing Anatomy started in 2022 as a side practice — Shweta Kukreja was running personal branding for two founders, both too busy to write but too sharp to delegate to a "social media manager."</p>
+      <p>What began as a workaround turned into a method: study the founder for two weeks, write in their voice, ship daily, defend strategy with data. The accounts grew. Inbound followed. Other founders asked.</p>
+      <p>Today Marketing Anatomy is a small studio of strategists, writers and designers serving founders, operators and investors. We don't take on every client. We take on the ones whose work is interesting enough that we'd want to be telling the story.</p>
+
+
+      <p style="margin-top:48px"><span class="eyebrow">/ The method</span></p>
+      <p style="margin-top:24px"><span class="drop">W</span>e treat a personal brand the way you'd treat a product. There's a thesis, a hypothesis about who the audience is, a content roadmap, and a weekly review where we look at what worked and rewrite what didn't.</p>
+      <p>It's slower than a content factory. It's also why the work compounds.</p>
+
+
+      <div style="margin-top:64px">
+        <a href="#contact" class="btn magnetic" data-link>Work with us <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+
+    <aside class="about-card reveal d1">
+      <span class="label">Specimen card / 001</span>
+      <h3>Shweta Kukreja</h3>
+      <div class="role">Founder · Personal Branding Strategist</div>
+      <div class="specs">
+        <div class="spec-row"><span class="k">Based</span><span class="v">India · Remote</span></div>
+        <div class="spec-row"><span class="k">Years writing</span><span class="v">5+</span></div>
+        <div class="spec-row"><span class="k">Founders served</span><span class="v">40+</span></div>
+        <div class="spec-row"><span class="k">Platforms</span><span class="v">LI · X · IG</span></div>
+        <div class="spec-row"><span class="k">Focus</span><span class="v">Founder voice</span></div>
+        <div class="spec-row"><span class="k">Avoids</span><span class="v">Boost buttons</span></div>
+        <div class="spec-row"><span class="k">Believes in</span><span class="v">Compounding</span></div>
+      </div>
+      <div class="cta">
+        <a href="#contact" data-link>Book intro call →</a>
+      </div>
+    </aside>
+  </div>
+
+
+  <section class="timeline">
+    <div class="timeline-wrap">
+      <div class="reveal" style="margin-bottom:48px">
+        <span class="eyebrow">§ A short history</span>
+        <h2 style="margin-top:18px">Five years, <em class="italic">no shortcuts.</em></h2>
+      </div>
+      <div class="timeline-row reveal">
+        <div class="yr">2022</div>
+        <div class="body">
+          <h4>The first founder client.</h4>
+          <p>A SaaS founder, a fresh LinkedIn account, a thesis. Three months later: 9K followers, two podcast invitations, one customer-of-record sourced from a comment thread.</p>
+        </div>
+      </div>
+      <div class="timeline-row reveal d1">
+        <div class="yr italic">2023</div>
+        <div class="body">
+          <h4>From freelance to studio.</h4>
+          <p>Five clients, two writers on retainer, the first dedicated newsletter. The "Anatomy" methodology gets written down. Word of mouth carries the entire pipeline — no ads, no cold outreach.</p>
+        </div>
+      </div>
+      <div class="timeline-row reveal d2">
+        <div class="yr">2024</div>
+        <div class="body">
+          <h4>Twitter joins the practice.</h4>
+          <p>One client hits 17.5M tweet impressions in a single month. Twitter ghost-writing becomes a core service line. Average engagement across the portfolio: 8.4%.</p>
+        </div>
+      </div>
+      <div class="timeline-row reveal d3">
+        <div class="yr italic">2025</div>
+        <div class="body">
+          <h4>The newsletter launch.</h4>
+          <p>The Anatomy Newsletter ships its first issue. By month six: 4,000 subscribers, 64% open rate, no paid acquisition. Reading the playbook becomes the studio's best lead generator.</p>
+        </div>
+      </div>
+      <div class="timeline-row reveal d4">
+        <div class="yr">2026</div>
+        <div class="body">
+          <h4>Right now.</h4>
+          <p>40 founders served. Three full-time team members. Newsletter at 8,400 readers. Currently taking on one new founder per month — by application.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="values">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;margin-bottom:48px">
+        <span class="eyebrow">§ How we work</span>
+        <h2 style="margin-top:18px">A few <em class="italic">opinions</em>, held loosely.</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value reveal"><span class="num">/ 01</span><h3>Voice over volume.</h3><p>One post you'd save beats fifteen that sound like LinkedIn. We'd rather skip a day than ship slop.</p></div>
+        <div class="value reveal d1"><span class="num">/ 02</span><h3>Strategy is a verb.</h3><p>Strategy isn't a deck. It's the question we ask before every post: who is this for, what does it earn, why now?</p></div>
+        <div class="value reveal d2"><span class="num">/ 03</span><h3>Receipts &gt; promises.</h3><p>You'll see real numbers in your weekly report. Engagement, inbound, sentiment. We name what worked and what didn't.</p></div>
+        <div class="value reveal"><span class="num">/ 04</span><h3>Boring tools, sharp ideas.</h3><p>Notion for ops. Google Docs for drafts. Native composers for posting. Energy goes to the writing.</p></div>
+        <div class="value reveal d1"><span class="num">/ 05</span><h3>The founder is the brand.</h3><p>You can't outsource taste. We can write the words and own the ops — but the point of view stays yours.</p></div>
+        <div class="value reveal d2"><span class="num">/ 06</span><h3>Long horizon, short loops.</h3><p>Personal brands compound on a 12–24 month timeline. We work in weekly loops, but plan for the long game.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="final-cta">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="wrap reveal">
+      <span class="eyebrow">§ The ask</span>
+      <h2 style="margin-top:18px">Curious if we're a <em>fit?</em></h2>
+      <p class="lead">15-minute intro call. No deck. No pitch.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn magnetic" data-link>Tell us about yourself <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════ -->
+<main id="services" class="page">
+
+
+  <section class="svc-hero">
+    <div class="wrap">
+      <span class="eyebrow">§ Services menu</span>
+      <h1 style="margin-top:24px">Three ways<br/>to <em>work together.</em></h1>
+      <p class="lead">Pick a package, or build a custom retainer. Every engagement starts with a two-week intake — voice mapping, audience research, content thesis — before a single post ships.</p>
+      <div class="row">
+        <a href="#contact" class="btn magnetic" data-link>Start a project <span class="arrow">→</span></a>
+        <a href="#work" class="btn ghost magnetic" data-link>See results first <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pkg">
+    <div class="wrap">
+      <div class="left reveal">
+        <span class="num">/ Package 01</span>
+        <h2>LinkedIn,<br/><em>fully managed.</em></h2>
+        <div class="price">$1,000<span class="pm">/ month</span></div>
+        <div class="pricenote">10% off when paid quarterly.</div>
+        <div class="cta">
+          <a href="#contact" class="btn magnetic" data-link data-package="LinkedIn — fully managed">Pick this <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="includes reveal d1">
+        <div class="inc-row"><div class="k"><span class="dot"></span> Content</div><div class="v">5–6 LinkedIn posts a week — long-form, carousels, polls. Designed, written and scheduled by us.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Engagement</div><div class="v">Daily comments and replies on your behalf. The unglamorous work that compounds.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Outreach</div><div class="v">Connecting you with VCs, devs, founders and media. Warm intros, not cold pitches.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Profile</div><div class="v">Bio, banner, featured section, headline — rebuilt to convert profile visits into followers and inbound.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Strategy call</div><div class="v">One hour every week to align on themes, review the previous week's data, and unblock anything in motion.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Reporting</div><div class="v">Monthly performance + commentary. Followers, impressions, engagement, inbound — and what to change.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Dashboard</div><div class="v">Real-time Notion view of your content calendar, approvals queue and analytics. Open to your team 24/7.</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pkg">
+    <div class="wrap">
+      <div class="left reveal">
+        <span class="num">/ Package 02</span>
+        <h2>Twitter / X,<br/><em>by the thread.</em></h2>
+        <div class="price">$1,200<span class="pm">/ month</span></div>
+        <div class="pricenote">Or project-based for one big launch.</div>
+        <div class="cta">
+          <a href="#contact" class="btn magnetic" data-link data-package="Twitter / X retainer">Pick this <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="includes reveal d1">
+        <div class="inc-row"><div class="k"><span class="dot"></span> 14 tweets/week</div><div class="v">Two original tweets a day. Hot takes, observations, thread teasers, conversation-starters.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> 2 threads/week</div><div class="v">Long-form storytelling — case studies, frameworks, breakdowns. The format that compounds best on X.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Reply strategy</div><div class="v">Daily replies to a curated list of accounts in your orbit. Distribution + relationships in one motion.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Hot-take radar</div><div class="v">When something breaks in your space, we draft a take inside 90 minutes. Speed is leverage on X.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Profile + pin</div><div class="v">Bio, header, pinned thread — the three things that decide whether profile visits convert.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Reporting</div><div class="v">Monthly impressions, profile visits, mentions, follower deltas + a curated "best tweet" breakdown.</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pkg">
+    <div class="wrap">
+      <div class="left reveal">
+        <span class="num">/ Package 03 — most picked</span>
+        <h2>The <em>Operator</em><br/>bundle.</h2>
+        <div class="price">$2,400<span class="pm">/ month</span></div>
+        <div class="pricenote">LinkedIn + Twitter + IG + newsletter. Saves $400/mo.</div>
+        <div class="cta">
+          <a href="#contact" class="btn magnetic" data-link data-package="The Operator package">Pick this <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="includes reveal d1">
+        <div class="inc-row"><div class="k"><span class="dot"></span> All of LinkedIn</div><div class="v">Everything in Package 01 — posts, engagement, outreach, weekly call, monthly report.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> All of Twitter</div><div class="v">14 tweets/week, 2 threads/week, hot-take radar, reply strategy.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Instagram (3 carousels/wk)</div><div class="v">Carousel design, reels scripts, story prompts. For founders whose audience also lives on IG.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Bi-weekly newsletter</div><div class="v">Repurpose the social work into an owned audience. Drafted by us, polished by you.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Quarterly audit</div><div class="v">Every 90 days we re-examine voice, audience and thesis. Adjusts the next quarter's roadmap.</div></div>
+        <div class="inc-row"><div class="k"><span class="dot"></span> Direct line</div><div class="v">A shared Slack channel with the team. Same-day responses, business hours.</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="compare">
+    <h2 class="reveal">Pick your <em>scope</em>.</h2>
+    <div class="cmp-table reveal">
+      <div class="cmp-row head">
+        <div>What's included</div>
+        <div>LinkedIn</div>
+        <div class="pop">Operator ★</div>
+        <div>Twitter</div>
+      </div>
+      <div class="cmp-row"><div>LinkedIn (5–6 posts/wk)</div><div><span class="check">✓</span></div><div class="pop"><span class="check">✓</span></div><div><span class="nope">—</span></div></div>
+      <div class="cmp-row"><div>Twitter / X (14 tweets/wk)</div><div><span class="nope">—</span></div><div class="pop"><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+      <div class="cmp-row"><div>Instagram carousels</div><div><span class="nope">—</span></div><div class="pop"><span class="check">✓</span></div><div><span class="nope">—</span></div></div>
+      <div class="cmp-row"><div>Bi-weekly newsletter</div><div><span class="nope">—</span></div><div class="pop"><span class="check">✓</span></div><div><span class="nope">—</span></div></div>
+      <div class="cmp-row"><div>Daily engagement</div><div><span class="check">✓</span></div><div class="pop"><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+      <div class="cmp-row"><div>Profile optimization</div><div><span class="check">✓</span></div><div class="pop"><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+      <div class="cmp-row"><div>Weekly strategy call</div><div><span class="check">✓</span></div><div class="pop"><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+      <div class="cmp-row"><div>Notion dashboard</div><div><span class="check">✓</span></div><div class="pop"><span class="check">✓</span></div><div><span class="check">✓</span></div></div>
+      <div class="cmp-row"><div>Quarterly brand audit</div><div><span class="nope">—</span></div><div class="pop"><span class="check">✓</span></div><div><span class="nope">—</span></div></div>
+      <div class="cmp-row bottom">
+        <div style="font-weight:500">Monthly retainer</div>
+        <div>$1,000</div>
+        <div class="pop">$2,400</div>
+        <div>$1,200</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="final-cta">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="wrap reveal">
+      <span class="eyebrow">§ Custom scope?</span>
+      <h2 style="margin-top:18px">We <em>build</em> retainers.</h2>
+      <p class="lead">Not every founder fits a package. Tell us the goal — we'll quote the path.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn magnetic" data-link>Get a custom quote <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════
+     PORTFOLIO / WORK
+     ═══════════════════════════════════ -->
+<main id="work" class="page">
+
+
+  <section class="port-hero">
+    <div class="wrap">
+      <span class="eyebrow">§ All case studies</span>
+      <h1 style="margin-top:24px">Work,<br/><em class="italic">tagged &amp; filed.</em></h1>
+      <p class="lead">A selection of founders, operators and creators we've built brands for. Numbers below are real, screenshot-able, and a click away.</p>
+    </div>
+  </section>
+
+
+  <div class="filters">
+    <span class="label">Filter:</span>
+    <button class="filter-btn active" data-hover>All</button>
+    <button class="filter-btn" data-hover>LinkedIn</button>
+    <button class="filter-btn" data-hover>Twitter / X</button>
+    <button class="filter-btn" data-hover>SaaS</button>
+    <button class="filter-btn" data-hover>Creator</button>
+    <button class="filter-btn" data-hover>D2C</button>
+    <button class="filter-btn" data-hover>VC / Operator</button>
+  </div>
+
+
+  <div class="work-grid">
+    <article class="work-card reveal" data-hover>
+      <div class="meta"><span>2026 / Case 01</span><span class="pill">LinkedIn</span></div>
+      <h3>From silent founder to <em>industry voice.</em></h3>
+      <div class="who">SaaS · 9 months · Devtools</div>
+      <p class="desc">Tech founder with deep technical credibility but no public presence. We rewrote the profile, mapped a content thesis around shipping culture, produced 5 posts/week. Signature posts went viral within the dev community.</p>
+      <div class="stats">
+        <div><div class="n">+66K</div><div class="l">Followers</div></div>
+        <div><div class="n">3M+</div><div class="l">Wkly imp.</div></div>
+        <div><div class="n">$420K</div><div class="l">Pipeline</div></div>
+      </div>
+    </article>
+
+
+    <article class="work-card reveal d1" data-hover>
+      <div class="meta"><span>2025 / Case 02</span><span class="pill">Twitter / X</span></div>
+      <h3>17.5 million impressions in a <em>single month.</em></h3>
+      <div class="who">Creator · 6 months · course-led</div>
+      <p class="desc">Threads + relentless original tweets. We wrote 273 tweets that month, including 8 long-form threads. The pinned thread alone drove 1.97M profile visits.</p>
+      <div class="stats">
+        <div><div class="n">+12K</div><div class="l">Followers</div></div>
+        <div><div class="n">17.5M</div><div class="l">Imp.</div></div>
+        <div><div class="n">5.8K</div><div class="l">Mentions</div></div>
+      </div>
+    </article>
+
+
+    <article class="work-card reveal" data-hover>
+      <div class="meta"><span>2025 / Case 03</span><span class="pill">D2C</span></div>
+      <h3><em>$1M GMV</em> sourced through one personal brand.</h3>
+      <div class="who">Luxury fashion · 12 months · founder-led</div>
+      <p class="desc">Industry storytelling, founder narrative, behind-the-curtain operational posts. Built trust before pitching anything — sales emerged from the audience itself.</p>
+      <div class="stats">
+        <div><div class="n">$1M</div><div class="l">Year-1</div></div>
+        <div><div class="n">+220%</div><div class="l">Engagement</div></div>
+        <div><div class="n">37%</div><div class="l">Conv. lift</div></div>
+      </div>
+    </article>
+
+
+    <article class="work-card reveal d1" data-hover>
+      <div class="meta"><span>2025 / Case 04</span><span class="pill">VC / Operator</span></div>
+      <h3>From <em>silent</em> to <em>booked-out.</em></h3>
+      <div class="who">VC operator · 5 months · part-time</div>
+      <p class="desc">Three posts a week. Within five months: a calendar full of inbound founder calls and a board seat sourced from a comment thread. The slow compounding case.</p>
+      <div class="stats">
+        <div><div class="n">5 mo</div><div class="l">To traction</div></div>
+        <div><div class="n">~80</div><div class="l">Inbound calls</div></div>
+        <div><div class="n">1</div><div class="l">Board seat</div></div>
+      </div>
+    </article>
+
+
+    <article class="work-card reveal" data-hover>
+      <div class="meta"><span>2025 / Case 05</span><span class="pill">SaaS / B2B</span></div>
+      <h3>A category leader, written into <em>existence.</em></h3>
+      <div class="who">Series A SaaS · 8 months · CEO ghost-write</div>
+      <p class="desc">Founder had the conviction; we built the public language. Six "manifesto" posts seeded the category narrative; subsequent content reinforced it weekly until journalists started using our framing.</p>
+      <div class="stats">
+        <div><div class="n">+38K</div><div class="l">Followers</div></div>
+        <div><div class="n">14</div><div class="l">Press</div></div>
+        <div><div class="n">2</div><div class="l">Forbes</div></div>
+      </div>
+    </article>
+
+
+    <article class="work-card reveal d1" data-hover>
+      <div class="meta"><span>2024 / Case 06</span><span class="pill">Creator</span></div>
+      <h3>A newsletter from <em>0 to 12K</em> in six months.</h3>
+      <div class="who">Solo creator · 6 months · LinkedIn + newsletter</div>
+      <p class="desc">Repurposed best LinkedIn content into a weekly digest. Audience built from the social presence, monetized through a sponsored slot and a paid tier.</p>
+      <div class="stats">
+        <div><div class="n">12K</div><div class="l">Subs</div></div>
+        <div><div class="n">61%</div><div class="l">Open rate</div></div>
+        <div><div class="n">$8K/mo</div><div class="l">Revenue</div></div>
+      </div>
+    </article>
+  </div>
+
+
+  <section class="final-cta">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="wrap reveal">
+      <span class="eyebrow">§ Add yours</span>
+      <h2 style="margin-top:18px">Want to be<br/><em>case 07?</em></h2>
+      <p class="lead">One slot left for May. Apply in two minutes.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn magnetic" data-link>Apply to work with us <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════
+     NEWSLETTER
+     ═══════════════════════════════════ -->
+<main id="newsletter" class="page">
+
+
+  <section class="nl-hero">
+    <div class="wrap">
+      <div class="badge" style="background:var(--ink);color:var(--pink);padding:9px 16px;border-radius:99px;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--pink);animation:pulse 1.6s infinite;display:inline-block"></span>
+        New issue every Tuesday
+      </div>
+      <h1>The <em>Anatomy</em><br/>Newsletter.</h1>
+      <p class="lead">A weekly dispatch on personal branding, ghost-writing, and what's actually working on LinkedIn this week. Read in 4 minutes. Free, forever.</p>
+      <form class="nl-form" onsubmit="return handleSubscribe(event)">
+        <input type="email" placeholder="founder@yourcompany.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div style="margin-top:32px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)">
+        8,400+ founders, operators &amp; investors. <span style="color:var(--ink)">62% open rate.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="nl-feature">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:48px">
+        <span class="eyebrow">§ The archive</span>
+        <h2 style="margin-top:18px">Recent <em class="italic">issues</em>.</h2>
+      </div>
+      <div class="archive">
+        <a href="#newsletter" class="archive-card reveal" data-link data-hover>
+          <div class="meta"><span>Issue 047</span><span>4 min</span></div>
+          <h3>The hooks that worked this week.</h3>
+          <p>Most founders try to sound smart. The ones who break out start with a confession. The four hook patterns that drove 80% of viral posts in our portfolio in April.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+        <a href="#newsletter" class="archive-card reveal d1" data-link data-hover>
+          <div class="meta"><span>Issue 046</span><span>5 min</span></div>
+          <h3>Why your second post matters more than your first.</h3>
+          <p>The first post gets you noticed. The second decides whether anyone follows. The architecture of a "stay" sequence.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+        <a href="#newsletter" class="archive-card reveal" data-link data-hover>
+          <div class="meta"><span>Issue 045</span><span>6 min</span></div>
+          <h3>The carousel template our portfolio uses (steal it).</h3>
+          <p>Slide 1: hook. Slide 2: pattern interrupt. Slides 3–7: meat. Slide 8: payoff. Slide 9: CTA. Why this structure compounds, with three real examples.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+        <a href="#newsletter" class="archive-card reveal d1" data-link data-hover>
+          <div class="meta"><span>Issue 044</span><span>4 min</span></div>
+          <h3>What I'd post if I were starting from zero today.</h3>
+          <p>Not the generic "30-day plan." A specific, week-by-week roadmap based on what moved the needle for our last five clients in their first 90 days.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+        <a href="#newsletter" class="archive-card reveal" data-link data-hover>
+          <div class="meta"><span>Issue 043</span><span>3 min</span></div>
+          <h3>The "boring post" that got us a Series A intro.</h3>
+          <p>It got 47 likes. But the right person commented — and that's the entire game on LinkedIn. A short essay on metrics that don't matter.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+        <a href="#newsletter" class="archive-card reveal d1" data-link data-hover>
+          <div class="meta"><span>Issue 042</span><span>7 min</span></div>
+          <h3>How to ghost-write a founder without sounding like a ghost.</h3>
+          <p>Voice mapping in two weeks: how we capture how a founder actually speaks, and translate it into 1,200-character posts that don't feel manufactured.</p>
+          <span class="read">Read issue <span class="arr">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sample-issue">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;margin-bottom:48px">
+        <span class="eyebrow">§ Sample issue</span>
+        <h2 style="margin-top:18px;font-size:clamp(40px,5vw,72px)">Issue 046, <em class="italic">in full.</em></h2>
+      </div>
+      <div class="issue reveal">
+        <div class="issue-head">
+          <span>Issue 046 — The Anatomy Newsletter</span>
+          <span>Apr 21, 2026</span>
+        </div>
+        <div class="issue-body">
+          <h3>Why your second post matters more than your first.</h3>
+          <p class="pull">"The first post gets you noticed. The second decides whether anyone stays."</p>
+          <p>Most founders obsess over the hook. The opening line. The thumbnail of the carousel. And they should — about half of LinkedIn's algorithm decides in the first 1.3 seconds whether to keep showing your post.</p>
+          <p>But the hook is a one-time event. After someone has read your hook, clicked your profile, and decided you might be interesting — they look at the <em class="italic">second</em> post on your feed.</p>
+          <p>That post does a different job. It's not trying to win attention. It's trying to <em class="italic">earn trust</em>.</p>
+          <p>Here's what we tell every founder: your second post should answer one question — "what does this person know that I don't?" Not opinions. Not takes. A specific, hard-won piece of knowledge. The kind of thing you'd only know after shipping for ten years.</p>
+          <p>Three patterns we've seen work, with examples from our portfolio:</p>
+          <p class="pat"><strong>Pattern 1: The unglamorous fact.</strong> "We spent 3 months on a feature 14 customers asked for. Two used it." Nobody can manufacture that — it's real, specific, and disarming.</p>
+          <p class="pat"><strong>Pattern 2: The reversal.</strong> "Everyone says X. We've actually found Y." Take the consensus, demonstrate why it's wrong with one concrete example.</p>
+          <p class="pat"><strong>Pattern 3: The receipt.</strong> "We sent 1,247 cold emails last quarter. Here's what 14% reply rates actually looked like." Numbers + context = built-in credibility.</p>
+          <p>If you want our full carousel of hook patterns, it's in next week's issue. Hit reply with what you're working on — I read every email.</p>
+          <p class="sig">— Shweta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="final-cta">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="wrap reveal">
+      <span class="eyebrow">§ Subscribe</span>
+      <h2 style="margin-top:18px">Get the next issue<br/>in your <em>inbox.</em></h2>
+      <p class="lead">No spam. Unsubscribe in one click. 8,400 readers can't all be wrong.</p>
+      <form class="nl-form" style="margin:48px auto 0" onsubmit="return handleSubscribe(event)">
+        <input type="email" placeholder="you@company.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <div style="margin-top:24px">
+        <a href="#contact" class="btn ghost magnetic" data-link>Or work with us directly <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════
+     CONTACT — LIGHT
+     ═══════════════════════════════════ -->
+<main id="contact" class="page">
+
+
+  <section class="contact-hero">
+    <div class="wrap">
+      <span class="eyebrow">§ Start a project</span>
+      <h1 style="margin-top:24px">Tell us about<br/>your <em>brand.</em></h1>
+      <p class="lead">Six fields. Two minutes. We reply within 48 hours with a calendar link or an honest "not a fit."</p>
+    </div>
+  </section>
+
+
+  <!-- trust strip -->
+  <section class="trust-strip reveal">
+    <div class="wrap">
+      <div class="item"><div class="n">48hr</div><div class="l">Reply window</div></div>
+      <div class="item"><div class="n">15min</div><div class="l">Intro call</div></div>
+      <div class="item"><div class="n">1 / mo</div><div class="l">New clients</div></div>
+      <div class="item"><div class="n">$1k+</div><div class="l">Starts at</div></div>
+    </div>
+  </section>
+
+
+  <section class="contact-section">
+    <div class="wrap">
+
+
+      <div>
+        <!-- progress bar -->
+        <div class="progress-bar reveal">
+          <div class="step active"><span class="n">1</span><span class="label">You</span></div>
+          <div class="ln"></div>
+          <div class="step"><span class="n">2</span><span class="label">Goal</span></div>
+          <div class="ln"></div>
+          <div class="step"><span class="n">3</span><span class="label">Budget</span></div>
+          <div class="ln"></div>
+          <div class="step"><span class="n">4</span><span class="label">Send</span></div>
+        </div>
+
+
+        <form class="contact-form reveal d1" id="contactForm" onsubmit="return handleSubmit(event)">
+
+
+          <div class="field">
+            <label>01 — Your name <span class="req">●</span></label>
+            <input type="text" name="name" placeholder="Founder, operator, creator…" required />
+          </div>
+
+
+          <div class="field">
+            <label>02 — Email <span class="req">●</span></label>
+            <input type="email" name="email" placeholder="you@company.com" required />
+          </div>
+
+
+          <div class="field">
+            <label>03 — Company / what you're building</label>
+            <input type="text" name="company" placeholder="A one-line description is enough." />
+          </div>
+
+
+          <div class="field">
+            <label>04 — I'm interested in <span class="req">●</span></label>
+            <div class="opt-grid" id="optGrid">
+              <button type="button" class="opt active" data-hover data-val="LinkedIn — fully managed"><span class="check"></span>LinkedIn</button>
+              <button type="button" class="opt" data-hover data-val="Twitter / X retainer"><span class="check"></span>Twitter / X</button>
+              <button type="button" class="opt" data-hover data-val="Instagram"><span class="check"></span>Instagram</button>
+              <button type="button" class="opt" data-hover data-val="The Operator package"><span class="check"></span>Operator bundle</button>
+              <button type="button" class="opt" data-hover data-val="Custom scope"><span class="check"></span>Custom scope</button>
+              <button type="button" class="opt" data-hover data-val="Not sure yet"><span class="check"></span>Not sure yet</button>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <label>05 — Monthly budget <span class="req">●</span></label>
+            <div class="budget-pills" id="budgetPills">
+              <button type="button" data-hover>$1k–2k</button>
+              <button type="button" class="active" data-hover>$2k–4k</button>
+              <button type="button" data-hover>$4k–6k</button>
+              <button type="button" data-hover>$6k+</button>
+              <button type="button" data-hover>Project-based</button>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <label>06 — Anything else? <span style="color:var(--ink-3);font-size:9px">Optional</span></label>
+            <textarea name="message" placeholder="Where you are now, where you'd like to be, what you've tried."></textarea>
+          </div>
+
+
+          <div class="submit-row">
+            <button type="submit" class="submit magnetic" data-hover>
+              Send the brief
+              <span class="arrow">→</span>
+            </button>
+            <div class="submit-note">Reply within <span class="nm">48 hours</span></div>
+          </div>
+        </form>
+      </div>
+
+
+      <aside class="contact-side">
+        <h4>The fine print.</h4>
+
+
+        <div class="info-block">
+          <div class="k">Direct email</div>
+          <div class="v"><a href="mailto:shwetakukreja36@gmail.com">shwetakukreja36@gmail.com</a></div>
+        </div>
+
+
+        <div class="info-block">
+          <div class="k">Response time</div>
+          <div class="v italic">Within 48 hours</div>
+        </div>
+
+
+        <div class="info-block">
+          <div class="k">Time zone</div>
+          <div class="v">IST · async-friendly</div>
+        </div>
+
+
+        <div class="info-block">
+          <div class="k">Capacity</div>
+          <div class="v italic">1 new client / month</div>
+        </div>
+
+
+        <div class="info-block">
+          <div class="k">Onboarding</div>
+          <div class="v">2-week intake</div>
+        </div>
+
+
+        <div class="info-block" style="border-bottom:1px solid var(--rule)">
+          <div class="k">Find us elsewhere</div>
+          <div class="v" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;font-size:14px">
+            <a href="#" data-hover>LinkedIn</a>
+            <a href="#" data-hover>Twitter</a>
+            <a href="#newsletter" data-link data-hover>Newsletter</a>
+          </div>
+        </div>
+
+
+        <!-- Booking shortcut -->
+        <div class="booking-card">
+          <div class="lab">Faster route</div>
+          <h5>Skip the form.</h5>
+          <p>Already know what you want? Grab a 15-min intro slot directly.</p>
+          <a href="#" class="cal" data-hover>Book intro call <span style="font-family:var(--serif);font-style:italic;font-size:16px">→</span></a>
+        </div>
+      </aside>
+
+
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- footer (shared) -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="brand">Marketing Anatomy<span style="color:var(--pink-deep)">.</span></div>
+      <div class="tag">A studio for personal branding, ghost-writing and audience-building. For founders, operators and creators who want a presence — not just an account.</div>
+    </div>
+    <div>
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="#about" data-link data-hover>About</a></li>
+        <li><a href="#services" data-link data-hover>Services</a></li>
+        <li><a href="#work" data-link data-hover>Work</a></li>
+        <li><a href="#contact" data-link data-hover>Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Read</h5>
+      <ul>
+        <li><a href="#newsletter" data-link data-hover>Newsletter</a></li>
+        <li><a href="#newsletter" data-link data-hover>Archive</a></li>
+        <li><a href="#" data-hover>LinkedIn</a></li>
+        <li><a href="#" data-hover>Twitter / X</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:shwetakukreja36@gmail.com" data-hover>Email</a></li>
+        <li>48hr response</li>
+        <li>1 client / month</li>
+        <li>Async-friendly</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© Marketing Anatomy 2026 — Made with care, not algorithms.</div>
+    <div class="stat"><span class="d"></span> 1 spot open for May</div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════
+     scripts
+     ═══════════════════════════════════ -->
+<script>
+/* custom cursor */
+(function(){
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let mx=0,my=0,tx=0,ty=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cursor.style.left=mx+'px';
+    cursor.style.top=my+'px';
+  });
+  function loop(){
+    tx+=(mx-tx)*0.18;
+    ty+=(my-ty)*0.18;
+    trail.style.left=tx+'px';
+    trail.style.top=ty+'px';
+    requestAnimationFrame(loop);
+  }
+  loop();
+  function bindHover(){
+    document.querySelectorAll('a, button, [data-hover], .svc-row, .case, .work-card, .archive-card, .opt').forEach(el=>{
+      if(el.__hovBound) return;
+      el.__hovBound = true;
+      el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+      el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+    });
+    document.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach(el=>{
+      if(el.__hovBound) return;
+      el.__hovBound = true;
+      el.addEventListener('mouseenter',()=>cursor.classList.add('text-h'));
+      el.addEventListener('mouseleave',()=>cursor.classList.remove('text-h'));
+      el.addEventListener('focus',()=>cursor.classList.add('text-h'));
+      el.addEventListener('blur',()=>cursor.classList.remove('text-h'));
+    });
+  }
+  bindHover();
+  window.__bindHover = bindHover;
+})();
+
+
+/* magnetic buttons */
+(function(){
+  document.querySelectorAll('.magnetic').forEach(el=>{
+    el.addEventListener('mousemove', e=>{
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top - r.height/2;
+      el.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
+    });
+    el.addEventListener('mouseleave',()=> el.style.transform = '');
+  });
+})();
+
+
+/* nav scrolled state */
+(function(){
+  const nav = document.getElementById('nav');
+  const onScroll = ()=> nav.classList.toggle('scrolled', window.scrollY > 40);
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+
+/* router */
+(function(){
+  const pages = document.querySelectorAll('main.page');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+
+  function showPage(id){
+    pages.forEach(p=>p.classList.toggle('active', p.id===id));
+    navLinks.forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href')==='#'+id);
+    });
+    window.scrollTo({top:0,behavior:'instant'});
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.remove('in'));
+    setTimeout(()=>{
+      initReveals();
+      initCounters();
+      window.__bindHover && window.__bindHover();
+    },50);
+  }
+
+
+  document.addEventListener('click',e=>{
+    const a = e.target.closest('a[data-link]');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href || !href.startsWith('#')) return;
+    e.preventDefault();
+    const id = href.slice(1);
+    if(document.getElementById(id)?.classList.contains('page')){
+      // pre-select package on contact page if data-package set
+      const pkg = a.getAttribute('data-package');
+      if(pkg && id==='contact'){
+        setTimeout(()=>{
+          document.querySelectorAll('#optGrid .opt').forEach(o=>{
+            o.classList.toggle('active', o.getAttribute('data-val')===pkg);
+          });
+        },120);
+      }
+      history.pushState(null,'',href);
+      showPage(id);
+    }
+  });
+
+
+  window.addEventListener('popstate',()=>{
+    const id = (location.hash||'#home').slice(1);
+    if(document.getElementById(id)?.classList.contains('page')) showPage(id);
+  });
+
+
+  const initial = (location.hash||'#home').slice(1);
+  if(document.getElementById(initial)?.classList.contains('page')) showPage(initial);
+})();
+
+
+/* reveal on scroll */
+function initReveals(){
+  const els = document.querySelectorAll('.page.active .reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>io.observe(el));
+}
+initReveals();
+
+
+/* counter animation */
+function initCounters(){
+  const els = document.querySelectorAll('.page.active [data-count]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = parseFloat(el.getAttribute('data-count'));
+        const suffix = el.getAttribute('data-suffix')||'';
+        const isFloat = target % 1 !== 0;
+        const dur = 1600;
+        const start = performance.now();
+        function tick(t){
+          const p = Math.min(1,(t-start)/dur);
+          const eased = 1 - Math.pow(1-p,3);
+          const v = target * eased;
+          el.textContent = (isFloat ? v.toFixed(1) : Math.round(v)) + suffix;
+          if(p<1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        io.unobserve(el);
+      }
+    });
+  },{threshold:.4});
+  els.forEach(el=>io.observe(el));
+}
+initCounters();
+
+
+/* marquee scroll-velocity reactive */
+(function(){
+  const m = document.getElementById('marquee');
+  if(!m) return;
+  let pos = 0, vel = 0, last = 0, lastScroll = window.scrollY;
+  function loop(t){
+    const dy = window.scrollY - lastScroll;
+    lastScroll = window.scrollY;
+    // base velocity 0.6, plus scroll contribution
+    vel = vel * 0.92 + dy * 0.4;
+    pos -= 0.8 + Math.abs(vel)*0.15;
+    if(pos < -m.scrollWidth/2) pos += m.scrollWidth/2;
+    m.style.transform = `translateX(${pos}px)`;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+
+/* form interactions */
+function handleSubscribe(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const input = e.target.querySelector('input');
+  btn.textContent = 'Subscribed ✓';
+  btn.style.background = 'var(--pink-deep)';
+  btn.style.color = 'var(--ink)';
+  input.value = '';
+  input.placeholder = 'See you Tuesday';
+  setTimeout(()=>{
+    btn.textContent = 'Subscribe';
+    btn.style.background = '';
+    btn.style.color = '';
+    input.placeholder = 'founder@yourcompany.com';
+  }, 4000);
+  return false;
+}
+
+
+function handleSubmit(e){
+  e.preventDefault();
+  const submit = e.target.querySelector('.submit');
+  submit.innerHTML = 'Sent ✓ <span class="arrow">→</span>';
+  submit.style.background = 'var(--pink)';
+  submit.style.color = 'var(--ink)';
+  submit.style.borderColor = 'var(--ink)';
+  // bump progress bar
+  document.querySelectorAll('.progress-bar .step').forEach(s=>{
+    s.classList.remove('active');
+    s.classList.add('done');
+  });
+  setTimeout(()=>{
+    alert("Thanks — Shweta will reply within 48 hours.");
+  },300);
+  return false;
+}
+
+
+/* opt grid (services interest) — single select */
+document.querySelectorAll('#optGrid .opt').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#optGrid .opt').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    bumpProgress(2);
+  });
+});
+
+
+/* budget pills */
+document.querySelectorAll('#budgetPills button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#budgetPills button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    bumpProgress(3);
+  });
+});
+
+
+/* progress bar bump on field interaction */
+function bumpProgress(step){
+  const steps = document.querySelectorAll('.progress-bar .step');
+  if(!steps.length) return;
+  steps.forEach((s,i)=>{
+    s.classList.remove('active','done');
+    if(i+1 < step) s.classList.add('done');
+    else if(i+1 === step) s.classList.add('active');
+  });
+}
+// listen on inputs
+document.querySelectorAll('.contact-form input[name="name"], .contact-form input[name="email"]').forEach(inp=>{
+  inp.addEventListener('focus',()=>bumpProgress(1));
+  inp.addEventListener('blur',()=>{
+    if(inp.value.length>0){
+      const name = document.querySelector('input[name="name"]');
+      const email = document.querySelector('input[name="email"]');
+      if(name?.value && email?.value) bumpProgress(2);
+    }
+  });
+});
+
+
+/* filter pill toggle */
+document.querySelectorAll('.filter-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    b.parentElement.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
